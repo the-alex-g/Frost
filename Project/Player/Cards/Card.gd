@@ -7,4 +7,7 @@ var health:int
 var cost:int
 
 func _ready():
-	text.text = str(damage)
+	text.text += str(cost)+"\n \n"
+	text.text += str(damage)
+	if health != 0:
+		text.text += "\n"+str(health)
