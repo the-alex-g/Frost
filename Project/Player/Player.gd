@@ -42,7 +42,7 @@ func drawcards(number:int):
 			deck[type]["number"] -= 1
 		card.position = handspace
 		card.connect("selected", self, "selected")
-		connect("used", card, "used")
+		var error = connect("used", card, "used")
 		handspace.x += 100
 		hand.add_child(card)
 

@@ -6,7 +6,7 @@
 [ext_resource path="res://Resources/Font.tres" type="DynamicFont" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40.5248, 59.7934 )
+extents = Vector2( 102.7, 106.954 )
 
 [node name="Card" type="Node2D"]
 script = ExtResource( 1 )

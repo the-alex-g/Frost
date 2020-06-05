@@ -7,15 +7,13 @@ var cardname:String = ""
 var damage:int = 0
 var health:int = 0
 var cost:int = 0
-var hovered:bool = false
 signal selected
 
 func _ready():
-	pass
-	#visible = false
+	$Sprite.hide()
 
 func generate_text():
-	visible = true
+	$Sprite.show()
 	nametext.text = cardname
 	costtext.text = str(cost)
 	statstext.text = str(damage)

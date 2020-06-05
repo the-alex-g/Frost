@@ -6,7 +6,7 @@
 [ext_resource path="res://Battlefield/CardOnField.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40.5248, 59.7934 )
+extents = Vector2( 102.7, 106.954 )
 
 [node name="CardOnField" type="Node2D"]
 script = ExtResource( 4 )
