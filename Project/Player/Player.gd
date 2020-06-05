@@ -2,10 +2,12 @@ extends Node2D
 
 onready var hand = $HBoxContainer
 onready var manatext:Label = $Label
+onready var healthtext:Label = $Health
 var cards:PackedScene = preload("res://Player/Cards/Card.tscn")
 var decksize:int = -1
 var type
 var playphase:bool = true
+var health:int = 10
 var handspace:Vector2 = Vector2(0,0)
 var cards_in_hand:Array = []
 var turn:int = 1
@@ -52,6 +54,10 @@ func drawcards(number:int):
 		handspace.x += 100
 		hand.add_child(card)
 
+func _process(delta):
+	healthtext.text = str(health)
+	manatext.text = str(mana)
+
 func selected(index):
 	if mana >= cards_in_hand[index]["cost"] and playphase:
 		emit_signal("selected", cards_in_hand[index], index)
@@ -75,3 +81,6 @@ func _on_Button_pressed():
 
 func _on_Main_attack():
 	playphase = false
+
+func _on_Main_damage_done_to_player(damage):
+	health -= damage

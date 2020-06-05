@@ -8,6 +8,8 @@ onready var enemy2 = $EnemyCard2
 onready var enemy3 = $EnemyCard3
 var lastpressed:int = 0
 signal pressed
+signal damage_done_to_player(damage)
+signal damage_done_to_enemy(damage)
 
 func _on_CardOnField_selected():
 	emit_pressed(1)
@@ -61,3 +63,9 @@ func _on_Main_attack():
 		card3.reset()
 	if enemy3.health <= 0:
 		enemy3.reset()
+	var enemydamage = (card1.damage+card2.damage+card3.damage)-(enemy1.health+enemy2.health+enemy3.health)
+	if enemydamage > 0:
+		emit_signal("damage_done_to_enemy", enemydamage)
+	var playerdamage = (enemy1.damage+enemy2.damage+enemy3.damage)-(card1.health+card2.health+card3.health)
+	if playerdamage > 0:
+		emit_signal("damage_done_to_player", playerdamage)

@@ -4,6 +4,7 @@ var selected = {}
 var index:int = -1
 var phase:String = "Play"
 signal selected_card(card)
+signal damage_done_to_player(damage)
 signal used(index)
 signal attack
 
@@ -23,3 +24,6 @@ func _on_Player_next_pressed():
 		emit_signal("attack")
 	elif phase == "Attack":
 		phase = "Enemy"
+
+func _on_Battlefield_damage_done_to_player(damage):
+	emit_signal("damage_done_to_player", damage)

@@ -16,9 +16,14 @@ func generate_text():
 	$Sprite.show()
 	nametext.text = cardname
 	costtext.text = str(cost)
-	statstext.text = str(damage)
+	if damage != 0:
+		statstext.text = str(damage)
+	else:
+		statstext.text = ""
+	if health != 0 and damage != 0:
+		statstext.text += "|"
 	if health != 0:
-		statstext.text += "|"+str(health)
+		statstext.text += str(health)
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:

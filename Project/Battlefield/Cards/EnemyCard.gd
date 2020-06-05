@@ -4,8 +4,8 @@ onready var nametext:Label = $Sprite/Name
 onready var costtext:Label = $Sprite/Cost
 onready var statstext:Label = $Sprite/Stats
 var cardname:String = ""
-var damage:int = 0
-var health:int = 0
+var damage:int = 5
+var health:int = 5
 var cost:int = 0
 signal selected
 
@@ -16,9 +16,14 @@ func generate_text():
 	$Sprite.show()
 	nametext.text = cardname
 	costtext.text = str(cost)
-	statstext.text = str(damage)
+	if damage != 0:
+		statstext.text = str(damage)
+	else:
+		statstext.text = ""
+	if health != 0 and damage != 0:
+		statstext.text += "|"
 	if health != 0:
-		statstext.text += "|"+str(health)
+		statstext.text += str(health)
 
 func reset():
 	cardname = ""
