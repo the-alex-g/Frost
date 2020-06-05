@@ -1,11 +1,15 @@
 extends Node2D
 
 onready var hand = $HBoxContainer
+onready var manatext:Label = $Label
 var cards:PackedScene = preload("res://Player/Cards/Card.tscn")
 var decksize:int = -1
 var type
+var playphase:bool = true
 var handspace:Vector2 = Vector2(0,0)
 var cards_in_hand:Array = []
+var turn:int = 1
+var mana:int = 1
 var deck:Array = [
 	{"name":"Frost Blast", "damage":2, "cost":1, "health":0, "number":3}, {"name":"Frost Spirit", "damage":1, "health":1, "cost":1, "number":3},
 	{"name":"Ice Shield", "damage":0, "health":2, "cost":1, "number":3}, {"name":"Snow Crab", "damage":1, "health":3, "cost":2, "number":2},
@@ -13,8 +17,10 @@ var deck:Array = [
 ]
 signal selected(card, index)
 signal used(index)
+signal next_pressed()
 
 func _ready():
+	manatext.text = str(mana)
 	drawcards(3)
 
 func find(variable:String):
@@ -42,13 +48,30 @@ func drawcards(number:int):
 			deck[type]["number"] -= 1
 		card.position = handspace
 		card.connect("selected", self, "selected")
-		var error = connect("used", card, "used")
+		var _error = connect("used", card, "used")
 		handspace.x += 100
 		hand.add_child(card)
 
 func selected(index):
-	emit_signal("selected", cards_in_hand[index], index)
+	if mana >= cards_in_hand[index]["cost"] and playphase:
+		emit_signal("selected", cards_in_hand[index], index)
 
 func _on_Main_used(index):
+	mana -= cards_in_hand[index]["cost"]
 	cards_in_hand.remove(index)
 	emit_signal("used", index)
+	manatext.text = str(mana)
+
+func new_turn():
+	if turn < 3:
+		mana = turn
+	else:
+		mana = 3
+	manatext.text = str(mana)
+	drawcards(1)
+
+func _on_Button_pressed():
+	emit_signal("next_pressed")
+
+func _on_Main_attack():
+	playphase = false

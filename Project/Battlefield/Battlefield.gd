@@ -39,3 +39,5 @@ func _on_Main_selected_card(card):
 		card3.cost = card["cost"]
 		card3.generate_text()
 
+func _on_Main_attack():
+	pass # Replace with function body.
