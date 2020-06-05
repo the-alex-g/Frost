@@ -1,16 +1,42 @@
 extends Node2D
 
-onready var area1:RichTextLabel = $RichTextLabel
-onready var area2:RichTextLabel = $RichTextLabel2
-onready var area3:RichTextLabel = $RichTextLabel3
-var a1health:int = 0
-var a1name:String = ""
-var a1damage:int = 0
+onready var card1 = $CardOnField
+onready var card2 = $CardOnField2
+onready var card3 = $CardOnField3
+var lastpressed:int = 0
 signal pressed
 
-func _process(delta):
-	if Input.is_mouse_button_pressed(1):
-		emit_signal("pressed")
+func _on_CardOnField_selected():
+	emit_pressed(1)
+
+func _on_CardOnField2_selected():
+	emit_pressed(2)
+
+func _on_CardOnField3_selected():
+	emit_pressed(3)
+
+func emit_pressed(section:int):
+	lastpressed = section
+	print(str(lastpressed))
+	emit_signal("pressed")
 
 func _on_Main_selected_card(card):
-	area1.text = card["name"]+"\n \n"+str(card["damage"])+"|"+str(card["health"])
+	if lastpressed == 1:
+		card1.damage = card["damage"]
+		card1.health = card["health"]
+		card1.cardname = card["name"]
+		card1.cost = card["cost"]
+		card1.generate_text()
+	elif lastpressed == 2:
+		card2.damage = card["damage"]
+		card2.health = card["health"]
+		card2.cardname = card["name"]
+		card2.cost = card["cost"]
+		card2.generate_text()
+	elif lastpressed == 3:
+		card3.damage = card["damage"]
+		card3.health = card["health"]
+		card3.cardname = card["name"]
+		card3.cost = card["cost"]
+		card3.generate_text()
+
