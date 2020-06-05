@@ -1,15 +1,63 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Cards/Card.gd" type="Script" id=1]
+[ext_resource path="res://Art/Card.png" type="Texture" id=2]
+[ext_resource path="res://Resources/LargeFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Resources/Font.tres" type="DynamicFont" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40.5248, 59.7934 )
 
 [node name="Card" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_right = 135.0
-margin_bottom = 98.0
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Name" type="Label" parent="Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -38.3773
+margin_top = -57.8868
+margin_right = -10.3773
+margin_bottom = -40.8868
+custom_fonts/font = ExtResource( 4 )
+text = "Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="mouse_entered" from="RichTextLabel" to="." method="_on_RichTextLabel_mouse_entered"]
-[connection signal="mouse_exited" from="RichTextLabel" to="." method="_on_RichTextLabel_mouse_exited"]
+
+[node name="Cost" type="Label" parent="Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = 25.5943
+margin_top = -60.5459
+margin_right = 34.5943
+margin_bottom = -34.5459
+custom_fonts/font = ExtResource( 3 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Label" parent="Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -7.15247
+margin_top = 31.3236
+margin_right = 19.8475
+margin_bottom = 57.3236
+custom_fonts/font = ExtResource( 3 )
+text = "1|2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

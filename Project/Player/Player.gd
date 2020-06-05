@@ -7,9 +7,9 @@ var type
 var handspace:Vector2 = Vector2(0,0)
 var cards_in_hand:Array = []
 var deck:Array = [
-	{"name":"Fire Blast", "damage":2, "cost":1, "health":0, "number":3}, {"name":"Flame Spirit", "damage":1, "health":1, "cost":1, "number":3},
-	{"name":"Flame Shield", "damage":0, "health":2, "cost":1, "number":3}, {"name":"Fire Crab", "damage":1, "health":3, "cost":2, "number":2},
-	{"name":"Drake", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Fire Giant", "damage":3, "health":3, "cost":3, "number":1}
+	{"name":"Frost Blast", "damage":2, "cost":1, "health":0, "number":3}, {"name":"Frost Spirit", "damage":1, "health":1, "cost":1, "number":3},
+	{"name":"Ice Shield", "damage":0, "health":2, "cost":1, "number":3}, {"name":"Snow Crab", "damage":1, "health":3, "cost":2, "number":2},
+	{"name":"Snow Drake", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Ice Giant", "damage":3, "health":3, "cost":3, "number":1}
 ]
 signal selected(card)
 

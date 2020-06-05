@@ -1,6 +1,8 @@
 extends Node2D
 
-onready var text:RichTextLabel = $RichTextLabel
+onready var nametext:Label = $Sprite/Name
+onready var costtext:Label = $Sprite/Cost
+onready var statstext:Label = $Sprite/Stats
 var cardname:String = ""
 var damage:int = 0
 var health:int = 0
@@ -10,19 +12,15 @@ var hovered:bool = false
 signal selected(index)
 
 func _ready():
-	text.text += cardname+" "+str(cost)+"\n \n"
-	text.text += str(damage)
+	nametext.text = cardname
+	costtext.text = str(cost)
+	statstext.text = str(damage)
 	if health != 0:
-		text.text += "|"+str(health)
+		statstext.text += "|"+str(health)
 
 func _process(_delta):
 	if Input.is_mouse_button_pressed(1) and hovered:
 		emit_signal("selected", index)
 
-func _on_RichTextLabel_mouse_entered():
-	modulate = Color(1,1,0,1)
-	hovered = true
-
-func _on_RichTextLabel_mouse_exited():
-	modulate = Color(1,1,1,1)
-	hovered = false
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	emit_signal("selected", index)
