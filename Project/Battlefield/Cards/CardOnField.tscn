@@ -3,7 +3,7 @@
 [ext_resource path="res://Resources/LargeFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Resources/Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Art/Card.png" type="Texture" id=3]
-[ext_resource path="res://Battlefield/CardOnField.gd" type="Script" id=4]
+[ext_resource path="res://Battlefield/Cards/CardOnField.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 102.7, 106.954 )

@@ -20,8 +20,9 @@ func generate_text():
 	if health != 0:
 		statstext.text += "|"+str(health)
 
-func _on_Area2D_input_event(_viewport, event, _shape_idx):
-	if event.is_pressed() and event.button_index == BUTTON_LEFT:
-		emit_signal("selected")
-
-
+func reset():
+	cardname = ""
+	damage = 0
+	health = 0
+	cost = 0
+	$Sprite.hide()

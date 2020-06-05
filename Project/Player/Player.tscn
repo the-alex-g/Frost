@@ -26,7 +26,7 @@ margin_top = 530.683
 margin_right = 176.983
 margin_bottom = 550.683
 custom_fonts/font = ExtResource( 2 )
-text = "Next Phase"
+text = "End Turn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
