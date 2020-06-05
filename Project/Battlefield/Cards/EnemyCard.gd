@@ -4,8 +4,8 @@ onready var nametext:Label = $Sprite/Name
 onready var costtext:Label = $Sprite/Cost
 onready var statstext:Label = $Sprite/Stats
 var cardname:String = ""
-var damage:int = 5
-var health:int = 5
+var damage:int = 0
+var health:int = 0
 var cost:int = 0
 signal selected
 
