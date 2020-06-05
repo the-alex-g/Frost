@@ -8,7 +8,7 @@ var damage:int = 0
 var health:int = 0
 var index:int = 0
 var cost:int = 0
-var hovered:bool = false
+var last_selected:bool = false
 signal selected(index)
 
 func _ready():
@@ -18,10 +18,13 @@ func _ready():
 	if health != 0:
 		statstext.text += "|"+str(health)
 
-func _process(_delta):
-	if Input.is_mouse_button_pressed(1) and hovered:
-		emit_signal("selected", index)
-
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:
 		emit_signal("selected", index)
+		last_selected = true
+
+func used(index2):
+	if index == index2:
+		queue_free()
+	if index2 < index:
+		index -= 1

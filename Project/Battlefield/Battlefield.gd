@@ -17,7 +17,6 @@ func _on_CardOnField3_selected():
 
 func emit_pressed(section:int):
 	lastpressed = section
-	print(str(lastpressed))
 	emit_signal("pressed")
 
 func _on_Main_selected_card(card):
