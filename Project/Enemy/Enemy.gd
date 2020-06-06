@@ -12,9 +12,9 @@ var turns:int = 1
 var type
 var cards_in_hand:Array = []
 var deck:Array = [
-	{"name":"Flame Sword", "enchantment":true, "damage":2, "cost":1, "health":0, "number":3}, {"name":"Fire Spirit", "enchantment":false, "damage":1, "health":1, "cost":1, "number":3},
-	{"name":"Flame Wall", "enchantment":true, "damage":0, "health":2, "cost":1, "number":3}, {"name":"Fire Crab", "enchantment":false, "damage":1, "health":3, "cost":2, "number":2},
-	{"name":"Fire Drake", "enchantment":false, "damage":2, "health":2, "cost":2, "number":2}, {"name":"Fire Giant", "enchantment":false, "damage":3, "health":3, "cost":3, "number":1}
+	{"name":"Obsidian Fly", "type":"creature", "damage":1, "cost":1, "health":1, "number":3}, {"name":"Fire Spirit", "type":"creature", "damage":1, "health":1, "cost":1, "number":3},
+	{"name":"Magma Ooze", "type":"creature", "damage":2, "health":1, "cost":1, "number":3}, {"name":"Flame Spider", "type":"creature", "damage":3, "health":1, "cost":2, "number":2},
+	{"name":"Fire Drake", "type":"creature", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Fire Giant", "type":"creature", "damage":3, "health":3, "cost":3, "number":1}
 ]
 signal played(card)
 signal turn_over
@@ -125,3 +125,6 @@ func _on_Main_enemy_turn():
 
 func _on_Main_cards_died(number):
 	total -= number
+
+func _on_Main_card_not_played(card):
+	cards_in_hand.append(card)

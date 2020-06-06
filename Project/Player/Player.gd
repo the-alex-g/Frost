@@ -13,9 +13,9 @@ var cards_in_hand:Array = []
 var turn:int = 1
 var mana:int = 1
 var deck:Array = [
-	{"name":"Frost Sword", "enchantment":true, "damage":2, "cost":1, "health":0, "number":3}, {"name":"Frost Spirit", "enchantment":false, "damage":1, "health":1, "cost":1, "number":3},
-	{"name":"Ice Shield","enchantment":true, "damage":0, "health":2, "cost":1, "number":3}, {"name":"Snow Crab", "enchantment":false, "damage":1, "health":3, "cost":2, "number":2},
-	{"name":"Snow Drake", "enchantment":false, "damage":2, "health":2, "cost":2, "number":2}, {"name":"Ice Giant", "enchantment":false, "damage":3, "health":3, "cost":3, "number":1}
+	{"name":"Frost Sword", "type":"enchantment", "damage":2, "cost":1, "health":0, "number":3}, {"name":"Frost Spirit", "type":"creature", "damage":1, "health":1, "cost":1, "number":3},
+	{"name":"Ice Shield","type":"enchantment", "damage":0, "health":2, "cost":1, "number":3}, {"name":"Snow Crab", "type":"creature", "damage":1, "health":3, "cost":2, "number":2},
+	{"name":"Snow Drake", "type":"creature", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Ice Giant", "type":"creature", "damage":3, "health":3, "cost":3, "number":1}
 ]
 signal selected(card, index)
 signal used(index)

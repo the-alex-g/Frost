@@ -14,6 +14,7 @@ script = ExtResource( 1 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 [connection signal="attack" from="." to="Battlefield" method="_on_Main_attack"]
+[connection signal="card_not_played" from="." to="Enemy" method="_on_Main_card_not_played"]
 [connection signal="cards_died" from="." to="Enemy" method="_on_Main_cards_died"]
 [connection signal="damage_done_to_enemy" from="." to="Enemy" method="_on_Main_damage_done_to_enemy"]
 [connection signal="damage_done_to_player" from="." to="Player" method="_on_Main_damage_done_to_player"]
