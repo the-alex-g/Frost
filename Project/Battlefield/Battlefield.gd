@@ -10,6 +10,7 @@ var lastpressed:int = 0
 signal pressed
 signal damage_done_to_player(damage)
 signal damage_done_to_enemy(damage)
+signal cards_died(number)
 signal player_turn
 
 func _on_CardOnField_selected():
@@ -46,30 +47,35 @@ func _on_Main_selected_card(card):
 		card3.generate_text()
 
 func _on_Main_attack():
+	var enemy_died:int = 0
 	card1.health -= enemy1.damage
 	enemy1.health -= card1.damage
 	if card1.health <= 0:
 		card1.reset()
 	if enemy1.health <= 0:
 		enemy1.reset()
+		enemy_died +=1
 	card2.health -= enemy2.damage
 	enemy2.health -= card2.damage
 	if card2.health <= 0:
 		card2.reset()
 	if enemy2.health <= 0:
 		enemy2.reset()
+		enemy_died += 1
 	card3.health -= enemy3.damage
 	enemy3.health -= card3.damage
 	if card3.health <= 0:
 		card3.reset()
 	if enemy3.health <= 0:
 		enemy3.reset()
+		enemy_died += 1
 	enemy1.generate_text()
 	enemy2.generate_text()
 	enemy3.generate_text()
 	card1.generate_text()
 	card2.generate_text()
 	card3.generate_text()
+	emit_signal("cards_died", enemy_died)
 	var enemydamage = (card1.damage+card2.damage+card3.damage)-(enemy1.health+enemy2.health+enemy3.health)
 	if enemydamage > 0:
 		emit_signal("damage_done_to_enemy", enemydamage)

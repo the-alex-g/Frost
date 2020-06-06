@@ -11,6 +11,7 @@ signal attack
 signal player_turn
 signal enemy_played(card)
 signal enemy_turn
+signal cards_died(number)
 
 func _on_Player_selected(card, index2):
 	selected = card
@@ -20,6 +21,7 @@ func _on_Battlefield_pressed():
 	if not selected.empty():
 		emit_signal("selected_card", selected)
 		emit_signal("used", index)
+		selected = {}
 
 func _on_Player_next_pressed():
 	emit_signal("enemy_turn")
@@ -38,3 +40,6 @@ func _on_Enemy_played(card):
 
 func _on_Battlefield_player_turn():
 	emit_signal("player_turn")
+
+func _on_Battlefield_cards_died(number):
+	emit_signal("cards_died", number)

@@ -43,8 +43,10 @@ func take_turn():
 			twocost.append(item)
 		elif item["cost"] == 3:
 			threecost.append(item)
-	if mana == 1 and onecost.size() > 0:
-		play1()
+	print(str(mana))
+	if mana == 1:
+		if onecost.size() > 0:
+			play1()
 	elif mana == 2:
 		if twocost.size() > 0 and total <= 2:
 			play2()
@@ -73,6 +75,7 @@ func take_turn():
 				play1()
 				play1()
 				play1()
+	yield(get_tree().create_timer(0.5), "timeout")
 	emit_signal("turn_over")
 
 func play1():
@@ -80,6 +83,7 @@ func play1():
 	var card = int(round(rand_range(0, onecost.size()-1)))
 	var played = cards_in_hand[card]
 	onecost.remove(card)
+	cards_in_hand.erase(cards_in_hand[card])
 	emit_signal("played", played)
 	total += 1
 
@@ -88,6 +92,7 @@ func play2():
 	var card = int(round(rand_range(0, twocost.size()-1)))
 	var played = cards_in_hand[card]
 	twocost.remove(card)
+	cards_in_hand.erase(cards_in_hand[card])
 	emit_signal("played", played)
 	total += 1
 
@@ -96,6 +101,7 @@ func play3():
 	var card = int(round(rand_range(0,threecost.size()-1)))
 	var played = cards_in_hand[card]
 	threecost.remove(card)
+	cards_in_hand.erase(cards_in_hand[card])
 	emit_signal("played", played)
 	total += 1
 
@@ -117,3 +123,6 @@ func _on_Main_damage_done_to_enemy(damage:int):
 
 func _on_Main_enemy_turn():
 	take_turn()
+
+func _on_Main_cards_died(number):
+	total -= number
