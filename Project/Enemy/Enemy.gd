@@ -12,9 +12,9 @@ var turns:int = 1
 var type
 var cards_in_hand:Array = []
 var deck:Array = [
-	{"name":"Flame Sword", "damage":2, "cost":1, "health":0, "number":3}, {"name":"Fire Spirit", "damage":1, "health":1, "cost":1, "number":3},
-	{"name":"Flame Wall", "damage":0, "health":2, "cost":1, "number":3}, {"name":"Fire Crab", "damage":1, "health":3, "cost":2, "number":2},
-	{"name":"Fire Drake", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Fire Giant", "damage":3, "health":3, "cost":3, "number":1}
+	{"name":"Flame Sword", "enchantment":true, "damage":2, "cost":1, "health":0, "number":3}, {"name":"Fire Spirit", "enchantment":false, "damage":1, "health":1, "cost":1, "number":3},
+	{"name":"Flame Wall", "enchantment":true, "damage":0, "health":2, "cost":1, "number":3}, {"name":"Fire Crab", "enchantment":false, "damage":1, "health":3, "cost":2, "number":2},
+	{"name":"Fire Drake", "enchantment":false, "damage":2, "health":2, "cost":2, "number":2}, {"name":"Fire Giant", "enchantment":false, "damage":3, "health":3, "cost":3, "number":1}
 ]
 signal played(card)
 signal turn_over

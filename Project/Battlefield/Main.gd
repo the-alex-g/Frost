@@ -20,7 +20,6 @@ func _on_Player_selected(card, index2):
 func _on_Battlefield_pressed():
 	if not selected.empty():
 		emit_signal("selected_card", selected)
-		emit_signal("used", index)
 		selected = {}
 
 func _on_Player_next_pressed():
@@ -43,3 +42,6 @@ func _on_Battlefield_player_turn():
 
 func _on_Battlefield_cards_died(number):
 	emit_signal("cards_died", number)
+
+func _on_Battlefield_used():
+	emit_signal("used", index)

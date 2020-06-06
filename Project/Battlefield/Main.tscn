@@ -27,6 +27,7 @@ script = ExtResource( 1 )
 [connection signal="damage_done_to_player" from="Battlefield" to="." method="_on_Battlefield_damage_done_to_player"]
 [connection signal="player_turn" from="Battlefield" to="." method="_on_Battlefield_player_turn"]
 [connection signal="pressed" from="Battlefield" to="." method="_on_Battlefield_pressed"]
+[connection signal="used" from="Battlefield" to="." method="_on_Battlefield_used"]
 [connection signal="next_pressed" from="Player" to="." method="_on_Player_next_pressed"]
 [connection signal="selected" from="Player" to="." method="_on_Player_selected"]
 [connection signal="played" from="Enemy" to="." method="_on_Enemy_played"]
