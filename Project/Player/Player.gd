@@ -5,7 +5,7 @@ onready var manatext:Label = $Label
 onready var healthtext:Label = $Health
 var cards:PackedScene = preload("res://Player/Cards/Card.tscn")
 var decksize:int = -1
-var type
+var type:int
 var playphase:bool = true
 var health:int = 10
 var handspace:Vector2 = Vector2(0,0)
@@ -29,44 +29,47 @@ func find(variable:String):
 	return foundvar
 
 func drawcards(number:int):
-	decksize = -1
-	for item in deck:
-		decksize += 1
+	decksize = deck.size()-1
+	#for item in deck:
+		#decksize += 1
 	for _x in range(0,number):
-		randomize()
-		type = int(round(rand_range(0,decksize)))
-		var card = cards.instance()
-		card.cardname = find("name")
-		card.damage = find("damage")
-		card.health = find("health")
-		card.cost = find("cost")
-		card.index = cards_in_hand.size()
-		cards_in_hand.append(deck[type])
-		if find("number") == 1:
-			deck.remove(type)
-			decksize -= 1
-		else:
-			deck[type]["number"] -= 1
-		card.position = handspace
-		card.connect("selected", self, "selected")
-		var _error = connect("used", card, "used")
-		handspace.x += 100
-		hand.add_child(card)
+		if decksize >= 0:
+			randomize()
+			type = int(round(rand_range(0,decksize)))
+			var card = cards.instance()
+			card.cardname = find("name") 
+			card.damage = find("damage")
+			card.health = find("health")
+			card.cost = find("cost")
+			card.index = cards_in_hand.size()
+			cards_in_hand.append(deck[type])
+			if find("number") == 1:
+				deck.erase(deck[type])
+				decksize -= 1
+			else:
+				deck[type]["number"] -= 1
+			card.position = handspace
+			card.connect("selected", self, "selected")
+			var _error = connect("used", card, "used")
+			handspace.x += 100
+			hand.add_child(card)
 
 func _process(delta):
 	healthtext.text = str(health)
 	manatext.text = str(mana)
 
 func selected(index):
-	if mana >= cards_in_hand[index]["cost"] and playphase:
+	if mana >= cards_in_hand[index]["cost"]:
 		emit_signal("selected", cards_in_hand[index], index)
 
 func _on_Main_used(index):
 	mana -= cards_in_hand[index]["cost"]
-	cards_in_hand.remove(index)
+	cards_in_hand.erase(cards_in_hand[index])
+	handspace.x -= 100
 	emit_signal("used", index)
 
 func new_turn():
+	turn += 1
 	if turn < 3:
 		mana = turn
 	else:
@@ -75,7 +78,6 @@ func new_turn():
 
 func _on_Button_pressed():
 	emit_signal("next_pressed")
-	playphase = false
 
 func _on_Main_damage_done_to_player(damage):
 	health -= damage

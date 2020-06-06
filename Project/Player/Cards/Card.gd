@@ -33,3 +33,4 @@ func used(index2):
 		queue_free()
 	if index2 < index:
 		index -= 1
+		position.x -= 100

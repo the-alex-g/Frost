@@ -10,6 +10,7 @@ var lastpressed:int = 0
 signal pressed
 signal damage_done_to_player(damage)
 signal damage_done_to_enemy(damage)
+signal player_turn
 
 func _on_CardOnField_selected():
 	emit_pressed(1)
@@ -63,12 +64,19 @@ func _on_Main_attack():
 		card3.reset()
 	if enemy3.health <= 0:
 		enemy3.reset()
+	enemy1.generate_text()
+	enemy2.generate_text()
+	enemy3.generate_text()
+	card1.generate_text()
+	card2.generate_text()
+	card3.generate_text()
 	var enemydamage = (card1.damage+card2.damage+card3.damage)-(enemy1.health+enemy2.health+enemy3.health)
 	if enemydamage > 0:
 		emit_signal("damage_done_to_enemy", enemydamage)
 	var playerdamage = (enemy1.damage+enemy2.damage+enemy3.damage)-(card1.health+card2.health+card3.health)
 	if playerdamage > 0:
 		emit_signal("damage_done_to_player", playerdamage)
+	emit_signal("player_turn")
 
 func _on_Main_enemy_played(card):
 	randomize()

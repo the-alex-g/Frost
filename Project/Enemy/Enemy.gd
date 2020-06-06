@@ -26,8 +26,13 @@ func _process(delta):
 	healthtext.text = str(health)
 
 func take_turn():
-	randomize()
+	yield(get_tree().create_timer(0.5), "timeout")
 	drawcards(1)
+	if turns <= 3:
+		mana = turns
+		turns += 1
+	else:
+		mana = 3
 	onecost.clear()
 	twocost.clear()
 	threecost.clear()
@@ -38,46 +43,71 @@ func take_turn():
 			twocost.append(item)
 		elif item["cost"] == 3:
 			threecost.append(item)
-	if mana == 1:
-		var card = int(round(rand_range(0,onecost.size())))
-		var played = cards_in_hand[card]
-		onecost.remove(card)
-		emit_signal("played", played)
-		total += 1
+	if mana == 1 and onecost.size() > 0:
+		play1()
 	elif mana == 2:
-		var choice = int(round(rand_range(1,2)))
-		if choice == 1 and onecost.size() >= 2 and total <= 1:
-			for _x in range(0,2):
-				var card = int(round(rand_range(0, onecost.size())))
-				var played = cards_in_hand[card]
-				onecost.remove(card)
-				emit_signal("played", played)
-			total += 2
-		elif choice == 2 and twocost.size() >= 2 and total <= 2:
-			var card = int(round(rand_range(0, twocost.size())))
-			var played = cards_in_hand[card]
-			twocost.remove(card)
-			emit_signal("played", played)
-			total += 1
-		elif twocost.size() == 0 and onecost.size() > 0 and total <= 2:
-			var card = int(round(rand_range(0, onecost.size())))
-			var played = cards_in_hand[card]
-			onecost.remove(card)
-			emit_signal("played", played)
-			total += 1
+		if twocost.size() > 0 and total <= 2:
+			play2()
+		elif twocost.size() == 0 and onecost.size() > 0:
+			if total == 2:
+				play1()
+			if total <= 1 and onecost.size() >= 2:
+				play1()
+				play1()
+	elif mana == 3:
+		if threecost.size() > 0:
+			play3()
+		elif twocost.size() > 0:
+			if onecost.size() > 0 and total <= 1:
+				play1()
+				play2()
+			elif total <= 2:
+				play2()
+		elif onecost.size() > 0:
+			if total <= 2:
+				play1()
+			elif total <= 1 and onecost.size() > 1:
+				play1()
+				play1()
+			elif total == 0 and onecost.size() > 2:
+				play1()
+				play1()
+				play1()
 	emit_signal("turn_over")
 
+func play1():
+	randomize()
+	var card = int(round(rand_range(0, onecost.size()-1)))
+	var played = cards_in_hand[card]
+	onecost.remove(card)
+	emit_signal("played", played)
+	total += 1
+
+func play2():
+	randomize()
+	var card = int(round(rand_range(0, twocost.size()-1)))
+	var played = cards_in_hand[card]
+	twocost.remove(card)
+	emit_signal("played", played)
+	total += 1
+
+func play3():
+	randomize()
+	var card = int(round(rand_range(0,threecost.size()-1)))
+	var played = cards_in_hand[card]
+	threecost.remove(card)
+	emit_signal("played", played)
+	total += 1
+
 func drawcards(number:int):
-	decksize = -1
-	for item in deck:
-		decksize += 1
+	decksize = deck.size()-1
 	if decksize != -1:
 		for _x in range(0,number):
 			randomize()
 			type = int(round(rand_range(0,decksize)))
 			cards_in_hand.append(deck[type])
 			if deck[type]["number"] == 1:
-				deck.remove(type)
+				deck.erase(deck[type])
 				decksize -= 1
 			else:
 				deck[type]["number"] -= 1
