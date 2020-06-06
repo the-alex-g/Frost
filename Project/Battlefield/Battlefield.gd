@@ -69,3 +69,73 @@ func _on_Main_attack():
 	var playerdamage = (enemy1.damage+enemy2.damage+enemy3.damage)-(card1.health+card2.health+card3.health)
 	if playerdamage > 0:
 		emit_signal("damage_done_to_player", playerdamage)
+
+func _on_Main_enemy_played(card):
+	randomize()
+	var choice = 1#int(round(rand_range(1,2)))
+	if choice == 1:
+		var played1 = c1p1(card)
+		var played2 = c1p2(card)
+		var played3 = c1p3(card)
+		if not played1 and not played2 and not played2:
+			var choice2 = int(round(rand_range(1,3)))
+			if choice2 == 1:
+				gen1(card)
+			elif choice2 == 2:
+				gen2(card)
+			elif choice2 == 3:
+				gen3(card)
+		elif not played1 and not played2:
+			var choice2 = int(round(rand_range(1,2)))
+			if choice2 == 1:
+				gen1(card)
+			elif choice2 == 2:
+				gen2(card)
+		elif not played2 and not played3:
+			var choice2 = int(round(rand_range(2,3)))
+			if choice2 == 2:
+				gen2(card)
+			elif choice2 == 3:
+				gen3(card)
+
+func c1p1(card):
+	if card1.damage < card2.damage and card1.damage < card3.damage:
+		gen1(card)
+		return true
+	else:
+		return false
+
+func c1p2(card):
+	if card2.damage < card1.damage and card2.damage < card3.damage:
+		gen2(card)
+		return true
+	else:
+		return false
+
+func c1p3(card):
+	if card3.damage < card2.damage and card3.damage < card1.damage:
+		gen3(card)
+		return true
+	else:
+		return false
+
+func gen1(card):
+	enemy1.cardname = card["name"]
+	enemy1.damage = card["damage"]
+	enemy1.health = card["health"]
+	enemy1.cost = card["cost"]
+	enemy1.generate_text()
+
+func gen3(card):
+	enemy3.cardname = card["name"]
+	enemy3.damage = card["damage"]
+	enemy3.health = card["health"]
+	enemy3.cost = card["cost"]
+	enemy3.generate_text()
+
+func gen2(card):
+	enemy2.cardname = card["name"]
+	enemy2.damage = card["damage"]
+	enemy2.health = card["health"]
+	enemy2.cost = card["cost"]
+	enemy2.generate_text()

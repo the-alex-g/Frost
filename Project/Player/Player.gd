@@ -13,7 +13,7 @@ var cards_in_hand:Array = []
 var turn:int = 1
 var mana:int = 1
 var deck:Array = [
-	{"name":"Frost Blast", "damage":2, "cost":1, "health":0, "number":3}, {"name":"Frost Spirit", "damage":1, "health":1, "cost":1, "number":3},
+	{"name":"Frost Sword", "damage":2, "cost":1, "health":0, "number":3}, {"name":"Frost Spirit", "damage":1, "health":1, "cost":1, "number":3},
 	{"name":"Ice Shield", "damage":0, "health":2, "cost":1, "number":3}, {"name":"Snow Crab", "damage":1, "health":3, "cost":2, "number":2},
 	{"name":"Snow Drake", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Ice Giant", "damage":3, "health":3, "cost":3, "number":1}
 ]
@@ -22,7 +22,6 @@ signal used(index)
 signal next_pressed()
 
 func _ready():
-	manatext.text = str(mana)
 	drawcards(3)
 
 func find(variable:String):
@@ -66,20 +65,16 @@ func _on_Main_used(index):
 	mana -= cards_in_hand[index]["cost"]
 	cards_in_hand.remove(index)
 	emit_signal("used", index)
-	manatext.text = str(mana)
 
 func new_turn():
 	if turn < 3:
 		mana = turn
 	else:
 		mana = 3
-	manatext.text = str(mana)
 	drawcards(1)
 
 func _on_Button_pressed():
 	emit_signal("next_pressed")
-
-func _on_Main_attack():
 	playphase = false
 
 func _on_Main_damage_done_to_player(damage):
