@@ -86,31 +86,26 @@ func _on_Main_attack():
 
 func _on_Main_enemy_played(card):
 	randomize()
-	var choice = 1#int(round(rand_range(1,2)))
+	var choice = int(round(rand_range(1,2)))
+	var played1:bool = false
+	var played2:bool = false
+	var played3:bool = false
 	if choice == 1:
-		var played1 = c1p1(card)
-		var played2 = c1p2(card)
-		var played3 = c1p3(card)
-		if not played1 and not played2 and not played2:
-			var choice2 = int(round(rand_range(1,3)))
-			if choice2 == 1:
-				gen1(card)
-			elif choice2 == 2:
-				gen2(card)
-			elif choice2 == 3:
-				gen3(card)
-		elif not played1 and not played2:
-			var choice2 = int(round(rand_range(1,2)))
-			if choice2 == 1:
-				gen1(card)
-			elif choice2 == 2:
-				gen2(card)
-		elif not played2 and not played3:
-			var choice2 = int(round(rand_range(2,3)))
-			if choice2 == 2:
-				gen2(card)
-			elif choice2 == 3:
-				gen3(card)
+		played1 = c1p1(card)
+		played2 = c1p2(card)
+		played3 = c1p3(card)
+	elif choice == 2:
+		played1 = c2p1(card)
+		played2 = c2p2(card)
+		played3 = c2p3(card)
+	if not played1 and not played2 and not played3:
+		var choice2 = int(round(rand_range(1,3)))
+		if choice2 == 1:
+			gen1(card)
+		elif choice2 == 2:
+			gen2(card)
+		elif choice2 == 3:
+			gen3(card)
 
 func c1p1(card):
 	if card1.damage < card2.damage and card1.damage < card3.damage:
@@ -128,6 +123,27 @@ func c1p2(card):
 
 func c1p3(card):
 	if card3.damage < card2.damage and card3.damage < card1.damage:
+		gen3(card)
+		return true
+	else:
+		return false
+
+func c2p1(card):
+	if card1.health < card2.health and card1.health < card3.health:
+		gen1(card)
+		return true
+	else:
+		return false
+
+func c2p2(card):
+	if card2.health < card1.health and card2.health < card3.health:
+		gen2(card)
+		return true
+	else:
+		return false
+
+func c2p3(card):
+	if card3.health < card2.health and card3.health < card1.health:
 		gen3(card)
 		return true
 	else:

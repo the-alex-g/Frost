@@ -43,7 +43,6 @@ func take_turn():
 			twocost.append(item)
 		elif item["cost"] == 3:
 			threecost.append(item)
-	print(str(mana))
 	if mana == 1:
 		if onecost.size() > 0:
 			play1()
