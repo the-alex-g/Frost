@@ -41,6 +41,7 @@ func drawcards(number:int):
 			card.damage = find("damage")
 			card.health = find("health")
 			card.cost = find("cost")
+			card.type = find("type")
 			card.index = cards_in_hand.size()
 			cards_in_hand.append(deck[type])
 			if find("number") == 1:

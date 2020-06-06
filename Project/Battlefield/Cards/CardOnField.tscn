@@ -26,6 +26,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Type" type="Label" parent="Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -35.2261
+margin_top = 27.197
+margin_right = -7.22606
+margin_bottom = 44.197
+custom_fonts/font = ExtResource( 2 )
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Cost" type="Label" parent="Sprite"]
 modulate = Color( 0, 0.0901961, 1, 1 )
 margin_left = 25.5943
@@ -41,9 +53,9 @@ __meta__ = {
 [node name="Stats" type="Label" parent="Sprite"]
 modulate = Color( 0, 0.0901961, 1, 1 )
 margin_left = -7.15247
-margin_top = 31.3236
+margin_top = 35.1051
 margin_right = 19.8475
-margin_bottom = 57.3236
+margin_bottom = 61.1051
 custom_fonts/font = ExtResource( 1 )
 text = "1|2"
 __meta__ = {

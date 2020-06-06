@@ -3,15 +3,18 @@ extends Node2D
 onready var nametext:Label = $Sprite/Name
 onready var costtext:Label = $Sprite/Cost
 onready var statstext:Label = $Sprite/Stats
+onready var typetext:Label = $Sprite/Type
 var cardname:String = ""
 var damage:int = 0
 var health:int = 0
 var index:int = 0
 var cost:int = 0
+var type:String = ""
 var last_selected:bool = false
 signal selected(index)
 
 func _ready():
+	typetext.text = type
 	nametext.text = cardname
 	costtext.text = str(cost)
 	if damage != 0:

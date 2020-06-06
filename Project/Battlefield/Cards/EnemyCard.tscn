@@ -37,12 +37,24 @@ __meta__ = {
 
 [node name="Stats" type="Label" parent="Sprite"]
 modulate = Color( 1, 0, 0, 1 )
-margin_left = -7.15247
-margin_top = 31.3236
-margin_right = 19.8475
-margin_bottom = 57.3236
+margin_left = -11.0349
+margin_top = 35.206
+margin_right = 15.9651
+margin_bottom = 61.206
 custom_fonts/font = ExtResource( 1 )
 text = "1|2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" type="Label" parent="Sprite"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = -30.936
+margin_top = 26.5554
+margin_right = -2.93603
+margin_bottom = 43.5554
+custom_fonts/font = ExtResource( 3 )
+text = "Type"
 __meta__ = {
 "_edit_use_anchors_": false
 }
