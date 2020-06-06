@@ -3,6 +3,7 @@ extends Node2D
 onready var nametext:Label = $Sprite/Name
 onready var costtext:Label = $Sprite/Cost
 onready var typetext:Label = $Sprite/Type
+onready var image:AnimationPlayer = $AnimationPlayer
 onready var statstext:Label = $Sprite/Stats
 var cardname:String = ""
 var damage:int = 0
@@ -17,6 +18,8 @@ func _ready():
 func generate_text(show):
 	if show:
 		$Sprite.show()
+	if cardname != "":
+		image.play(cardname)
 	nametext.text = cardname
 	costtext.text = str(cost)
 	typetext.text = type

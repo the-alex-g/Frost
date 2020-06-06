@@ -4,6 +4,7 @@ onready var nametext:Label = $Sprite/Name
 onready var costtext:Label = $Sprite/Cost
 onready var statstext:Label = $Sprite/Stats
 onready var typetext:Label = $Sprite/Type
+onready var image:AnimationPlayer = $AnimationPlayer
 var cardname:String = ""
 var damage:int = 0
 var health:int = 0
@@ -14,6 +15,7 @@ var last_selected:bool = false
 signal selected(index)
 
 func _ready():
+	image.play(cardname)
 	typetext.text = type
 	nametext.text = cardname
 	costtext.text = str(cost)
