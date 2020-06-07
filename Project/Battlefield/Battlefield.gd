@@ -131,42 +131,42 @@ func _on_Main_enemy_played(card):
 				gen3(card)
 
 func c1p1(card):
-	if card1.damage < card2.damage and card1.damage < card3.damage and enemy1.damage <= card["damage"]:
+	if card1.damage < card2.damage and card1.damage < card3.damage and enemy1.cardname != "":
 		gen1(card)
 		return true
 	else:
 		return false
 
 func c1p2(card):
-	if card2.damage < card1.damage and card2.damage < card3.damage and enemy2.damage <= card["damage"]:
+	if card2.damage < card1.damage and card2.damage < card3.damage and enemy2.cardname != "":
 		gen2(card)
 		return true
 	else:
 		return false
 
 func c1p3(card):
-	if card3.damage < card2.damage and card3.damage < card1.damage  and enemy3.damage <= card["damage"]:
+	if card3.damage < card2.damage and card3.damage < card1.damage and enemy3.cardname != "":
 		gen3(card)
 		return true
 	else:
 		return false
 
 func c2p1(card):
-	if card1.health < card2.health and card1.health < card3.health and enemy1.health <= card["health"]:
+	if card1.health < card2.health and card1.health < card3.health and enemy1.cardname != "":
 		gen1(card)
 		return true
 	else:
 		return false
 
 func c2p2(card):
-	if card2.health < card1.health and card2.health < card3.health and enemy2.health <= card["health"]:
+	if card2.health < card1.health and card2.health < card3.health and enemy2.cardname != "":
 		gen2(card)
 		return true
 	else:
 		return false
 
 func c2p3(card):
-	if card3.health < card2.health and card3.health < card1.health and enemy3.health <= card["health"]:
+	if card3.health < card2.health and card3.health < card1.health and enemy3.cardname != "":
 		gen3(card)
 		return true
 	else:
