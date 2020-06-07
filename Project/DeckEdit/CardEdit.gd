@@ -25,23 +25,7 @@ signal used(card, index2)
 signal deck_ready(deck)
 
 func _ready():
-	generate_deck()
-	for item in available:
-		if not deck.has(item):
-			var Select = select.instance()
-			Select.damage = item["damage"]
-			Select.health = item["health"]
-			Select.cardname = item["name"]
-			Select.type = item["type"]
-			Select.cost = item["cost"]
-			Select.index = available.find(item)
-			Select.position = Vector2(50,selectspace.position.y+spacemod)
-			var _error = connect("value_changed", Select, "slide")
-			Select.connect("selected", self, "selected")
-			add_child(Select)
-			slider.max_value += 25
-			slider.min_value -= 25
-			spacemod += 100
+	position = Vector2(2000,2000)
 
 func _on_VSlider_value_changed(value):
 	emit_signal("value_changed", value)
@@ -61,9 +45,7 @@ func selected(index):
 
 func _on_Node_selected(index, card):
 	if selected_index != 0:
-		if deck[card]["number"] == 1:
-			deck.remove(card)
-		else:
+		if deck[card]["number"] > 0:
 			deck[card]["number"] -= 1
 		deck[selected_index]["number"] += 1
 		print(str(deck))
@@ -87,5 +69,22 @@ func _on_Main_fight():
 	position = Vector2(2000,2000)
 
 func reset():
-	deck.append(foo)
+	for item in foo:
+		deck.append(item)
 	foo.clear()
+	generate_deck()
+	for item in available:
+		var Select = select.instance()
+		Select.damage = item["damage"]
+		Select.health = item["health"]
+		Select.cardname = item["name"]
+		Select.type = item["type"]
+		Select.cost = item["cost"]
+		Select.index = available.find(item)
+		Select.position = Vector2(50,selectspace.position.y+spacemod)
+		var _error = connect("value_changed", Select, "slide")
+		Select.connect("selected", self, "selected")
+		add_child(Select)
+		slider.max_value += 25
+		slider.min_value -= 25
+		spacemod += 100

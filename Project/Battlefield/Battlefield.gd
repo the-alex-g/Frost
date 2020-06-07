@@ -195,3 +195,18 @@ func gen2(card):
 	enemy2.cost = card["cost"]
 	enemy2.type = card["type"]
 	enemy2.generate_text(true)
+
+func _on_Main_restart():
+	reset()
+	position = Vector2.ZERO
+
+func reset():
+	enemy1.reset()
+	enemy2.reset()
+	enemy3.reset()
+	card1.reset()
+	card2.reset()
+	card3.reset()
+
+func _on_Main_fight_over():
+	position = Vector2(2000,2000)

@@ -11,6 +11,11 @@ var mana:int = 1
 var turns:int = 1
 var type
 var cards_in_hand:Array = []
+var savedeck:Array = [
+	{"name":"Obsidian Fly", "type":"creature", "damage":1, "cost":1, "health":1, "number":3}, {"name":"Fire Spirit", "type":"creature", "damage":1, "health":1, "cost":1, "number":3},
+	{"name":"Magma Ooze", "type":"creature", "damage":2, "health":1, "cost":1, "number":3}, {"name":"Flame Spider", "type":"creature", "damage":3, "health":1, "cost":2, "number":2},
+	{"name":"Fire Drake", "type":"creature", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Fire Giant", "type":"creature", "damage":3, "health":3, "cost":3, "number":1}
+]
 var deck:Array = [
 	{"name":"Obsidian Fly", "type":"creature", "damage":1, "cost":1, "health":1, "number":3}, {"name":"Fire Spirit", "type":"creature", "damage":1, "health":1, "cost":1, "number":3},
 	{"name":"Magma Ooze", "type":"creature", "damage":2, "health":1, "cost":1, "number":3}, {"name":"Flame Spider", "type":"creature", "damage":3, "health":1, "cost":2, "number":2},
@@ -18,6 +23,7 @@ var deck:Array = [
 ]
 signal played(card)
 signal turn_over
+signal died
 
 func _ready():
 	drawcards(2)
@@ -119,6 +125,8 @@ func drawcards(number:int):
 
 func _on_Main_damage_done_to_enemy(damage:int):
 	health -= damage
+	if health <= 0:
+		emit_signal("died")
 
 func _on_Main_enemy_turn():
 	take_turn()
@@ -128,3 +136,14 @@ func _on_Main_cards_died(number):
 
 func _on_Main_card_not_played(card):
 	cards_in_hand.append(card)
+
+func _on_Main_restart():
+	restart()
+
+func restart():
+	health = 12
+	deck = savedeck
+	mana = 1
+	turns = 1
+	cards_in_hand.clear()
+	total = 0

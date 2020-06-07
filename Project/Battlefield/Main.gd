@@ -11,8 +11,10 @@ signal attack
 signal player_turn
 signal enemy_played(card)
 signal enemy_turn
+signal fight_over
 signal card_not_played(card)
 signal cards_died(number)
+signal restart
 signal new_deck(deck)
 
 func _on_Player_selected(card, index2):
@@ -67,6 +69,11 @@ func _on_Main_new_deck(deck):
 
 func _on_Main_fight():
 	phase = "Play"
+	emit_signal("restart")
 
 func _on_Main_edit():
 	phase = "Foo"
+
+func _on_Enemy_died():
+	if phase == "Play":
+		emit_signal("fight_over")

@@ -22,9 +22,6 @@ signal used(index)
 signal next_pressed()
 
 func _ready():
-	for item in deck:
-		if item["number"] == 0:
-			deck.erase(item)
 	drawcards(3)
 
 func find(variable:String):
@@ -88,3 +85,14 @@ func _on_Main_damage_done_to_player(damage):
 
 func _on_Main_new_deck(newdeck):
 	deck = newdeck
+
+func _on_Main_restart():
+	reset()
+
+func reset():
+	health = 12
+	mana = 1
+	turn = 1
+	cards_in_hand.clear()
+	handspace = Vector2.ZERO
+	drawcards(3)
