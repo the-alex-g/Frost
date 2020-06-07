@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Resources/LargeFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Battlefield/Cards/EnemyCard.gd" type="Script" id=2]
@@ -17,10 +17,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 4 ]
+"values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Fire Giant"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -32,11 +32,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 5 ]
+"values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Fire Spirit"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -50,8 +49,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Flame Spider"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -62,11 +60,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3 ]
+"values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Magma Ooze"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -80,8 +77,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Obsidian Fly"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -95,14 +91,44 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "Pheonix"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Roc"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
 [node name="EnemyCard" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 vframes = 2
-hframes = 3
-frame = 5
+hframes = 5
+frame = 3
 
 [node name="Name" type="Label" parent="Sprite"]
 modulate = Color( 1, 0, 0, 1 )
@@ -154,8 +180,10 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Fire Drake" = SubResource( 1 )
-"anims/Fire Giant" = SubResource( 6 )
-"anims/Fire Spirit" = SubResource( 2 )
-"anims/Flame Spider" = SubResource( 3 )
-"anims/Magma Ooze" = SubResource( 4 )
-"anims/Obsidian Fly" = SubResource( 5 )
+"anims/Fire Giant" = SubResource( 2 )
+"anims/Fire Spirit" = SubResource( 3 )
+"anims/Flame Spider" = SubResource( 4 )
+"anims/Magma Ooze" = SubResource( 5 )
+"anims/Obsidian Fly" = SubResource( 6 )
+anims/Pheonix = SubResource( 7 )
+anims/Roc = SubResource( 8 )

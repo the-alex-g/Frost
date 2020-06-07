@@ -37,7 +37,7 @@ func drawcards(number:int):
 			randomize()
 			type = int(round(rand_range(0,decksize)))
 			var card = cards.instance()
-			card.cardname = find("name") 
+			card.cardname = find("name")
 			card.damage = find("damage")
 			card.health = find("health")
 			card.cost = find("cost")
