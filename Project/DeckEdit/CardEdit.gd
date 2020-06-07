@@ -3,6 +3,7 @@ extends Node2D
 onready var selectspace:Position2D = $Position2D
 onready var slider:VSlider = $VSlider
 var spacemod:int = 0
+var selected_index:int = 0
 var select:PackedScene = preload("res://DeckEdit/Cardselect/CardSelect.tscn")
 var cards:Array = [
 	{"name":"Frost Sword", "type":"enchantment", "damage":2, "cost":1, "health":0, "number":0}, {"name":"Frost Spirit", "type":"creature", "damage":1, "health":1, "cost":1, "number":0},
@@ -20,8 +21,10 @@ var deck:Array = [{"name":"Frost Sword", "type":"enchantment", "damage":2, "cost
 	{"name":"Snow Drake", "type":"creature", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Ice Giant", "type":"creature", "damage":3, "health":3, "cost":3, "number":1}
 ]
 signal value_changed(value)
+signal used(card, index2)
 
 func _ready():
+	generate_deck()
 	for item in available:
 		if not deck.has(item):
 			var Select = select.instance()
@@ -32,7 +35,8 @@ func _ready():
 			Select.cost = item["cost"]
 			Select.index = available.find(item)
 			Select.position = Vector2(50,selectspace.position.y+spacemod)
-			connect("value_changed", Select, "slide")
+			var _error = connect("value_changed", Select, "slide")
+			Select.connect("selected", self, "selected")
 			add_child(Select)
 			slider.max_value += 25
 			slider.min_value -= 25
@@ -40,3 +44,19 @@ func _ready():
 
 func _on_VSlider_value_changed(value):
 	emit_signal("value_changed", value)
+
+func generate_deck():
+	var number:int = 1
+	for item in deck:
+		for _x in range(0, item["number"]):
+			get_node("Node/DeckEdit"+str(number)).generate_text(item)
+			get_node("Node/DeckEdit"+str(number)).index = number
+			number += 1
+
+func selected(index):
+	selected_index = index
+	print(str(index))
+
+func _on_Node_selected(index):
+	if selected_index != 0:
+		emit_signal("used", available[selected_index], index)

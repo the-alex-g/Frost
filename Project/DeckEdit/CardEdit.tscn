@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://DeckEdit/CardEdit.gd" type="Script" id=1]
+[ext_resource path="res://DeckEdit/Cardselect/DeckEdit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://DeckEdit/Regulator.gd" type="Script" id=3]
 
 [node name="CardEdit" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 18.3722, 35.6637 )
@@ -18,4 +23,79 @@ max_value = 50.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="DeckEdit1" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 200, 150 )
+
+[node name="DeckEdit2" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 300, 150 )
+
+[node name="DeckEdit3" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 400, 150 )
+
+[node name="DeckEdit4" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 500, 150 )
+
+[node name="DeckEdit5" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 600, 150 )
+
+[node name="DeckEdit6" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 700, 150 )
+
+[node name="DeckEdit7" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 800, 150 )
+
+[node name="DeckEdit8" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 200, 300 )
+
+[node name="DeckEdit9" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 300, 300 )
+
+[node name="DeckEdit10" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 400, 300 )
+
+[node name="DeckEdit11" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 500, 300 )
+
+[node name="DeckEdit12" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 600, 300 )
+
+[node name="DeckEdit13" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 700, 300 )
+
+[node name="DeckEdit14" parent="Node" instance=ExtResource( 2 )]
+position = Vector2( 800, 300 )
+[connection signal="used" from="." to="Node" method="_on_CardEdit_used"]
 [connection signal="value_changed" from="VSlider" to="." method="_on_VSlider_value_changed"]
+[connection signal="selected" from="Node" to="." method="_on_Node_selected"]
+[connection signal="used" from="Node" to="Node/DeckEdit9" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit3" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit2" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit11" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit14" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit1" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit8" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit12" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit4" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit5" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit13" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit10" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit6" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit7" method="_on_Node_used"]
+[connection signal="selected" from="Node/DeckEdit1" to="Node" method="_on_DeckEdit1_selected"]
+[connection signal="selected" from="Node/DeckEdit2" to="Node" method="_on_DeckEdit2_selected"]
+[connection signal="selected" from="Node/DeckEdit3" to="Node" method="_on_DeckEdit3_selected"]
+[connection signal="selected" from="Node/DeckEdit4" to="Node" method="_on_DeckEdit4_selected"]
+[connection signal="selected" from="Node/DeckEdit5" to="Node" method="_on_DeckEdit5_selected"]
+[connection signal="selected" from="Node/DeckEdit6" to="Node" method="_on_DeckEdit6_selected"]
+[connection signal="selected" from="Node/DeckEdit7" to="Node" method="_on_DeckEdit7_selected"]
+[connection signal="selected" from="Node/DeckEdit8" to="Node" method="_on_DeckEdit8_selected"]
+[connection signal="selected" from="Node/DeckEdit9" to="Node" method="_on_DeckEdit9_selected"]
+[connection signal="selected" from="Node/DeckEdit10" to="Node" method="_on_DeckEdit10_selected"]
+[connection signal="selected" from="Node/DeckEdit11" to="Node" method="_on_DeckEdit11_selected"]
+[connection signal="selected" from="Node/DeckEdit12" to="Node" method="_on_DeckEdit12_selected"]
+[connection signal="selected" from="Node/DeckEdit13" to="Node" method="_on_DeckEdit13_selected"]
+[connection signal="selected" from="Node/DeckEdit14" to="Node" method="_on_DeckEdit14_selected"]

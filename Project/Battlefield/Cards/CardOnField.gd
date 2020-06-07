@@ -23,14 +23,9 @@ func generate_text(show):
 	typetext.text = type
 	nametext.text = cardname
 	costtext.text = str(cost)
-	if damage != 0:
-		statstext.text = str(damage)
-	else:
-		statstext.text = ""
-	if health != 0 and damage != 0:
-		statstext.text += "|"
-	if health != 0:
-		statstext.text += str(health)
+	statstext.text = str(damage)
+	statstext.text += "|"
+	statstext.text += str(health)
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:
