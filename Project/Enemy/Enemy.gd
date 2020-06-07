@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var healthtext:Label = $Health
-var health:int = 10
+var health:int = 12
 var decksize:int = -1
 var total = 0
 var onecost:Array = []

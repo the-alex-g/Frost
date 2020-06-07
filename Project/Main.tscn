@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://DeckEdit/CardEdit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Battlefield/Main.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Main2.gd" type="Script" id=3]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Battlefield" parent="." instance=ExtResource( 2 )]
+
+[node name="CardEdit" parent="." instance=ExtResource( 1 )]
+[connection signal="edit" from="." to="Battlefield" method="_on_Main_edit"]
+[connection signal="edit" from="." to="CardEdit" method="_on_Main_edit"]
+[connection signal="fight" from="." to="Battlefield" method="_on_Main_fight"]
+[connection signal="fight" from="." to="CardEdit" method="_on_Main_fight"]
+[connection signal="new_deck" from="." to="Battlefield" method="_on_Main_new_deck"]
+[connection signal="deck_ready" from="CardEdit" to="." method="_on_CardEdit_deck_ready"]

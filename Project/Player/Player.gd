@@ -7,7 +7,7 @@ var cards:PackedScene = preload("res://Player/Cards/Card.tscn")
 var decksize:int = -1
 var type:int
 var playphase:bool = true
-var health:int = 10
+var health:int = 12
 var handspace:Vector2 = Vector2(0,0)
 var cards_in_hand:Array = []
 var turn:int = 1
@@ -22,6 +22,9 @@ signal used(index)
 signal next_pressed()
 
 func _ready():
+	for item in deck:
+		if item["number"] == 0:
+			deck.erase(item)
 	drawcards(3)
 
 func find(variable:String):
@@ -82,3 +85,6 @@ func _on_Button_pressed():
 
 func _on_Main_damage_done_to_player(damage):
 	health -= damage
+
+func _on_Main_new_deck(newdeck):
+	deck = newdeck

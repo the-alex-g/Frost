@@ -20,6 +20,7 @@ script = ExtResource( 1 )
 [connection signal="damage_done_to_player" from="." to="Player" method="_on_Main_damage_done_to_player"]
 [connection signal="enemy_played" from="." to="Battlefield" method="_on_Main_enemy_played"]
 [connection signal="enemy_turn" from="." to="Enemy" method="_on_Main_enemy_turn"]
+[connection signal="new_deck" from="." to="Player" method="_on_Main_new_deck"]
 [connection signal="player_turn" from="." to="Player" method="new_turn"]
 [connection signal="selected_card" from="." to="Battlefield" method="_on_Main_selected_card"]
 [connection signal="used" from="." to="Player" method="_on_Main_used"]

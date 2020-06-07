@@ -9,9 +9,10 @@ var cardname:String = ""
 var damage:int = 0
 var health:int = 0
 var index:int = 0
+var cardindex:int = 0
 var cost:int = 0
 var type:String = ""
-signal selected(index)
+signal selected(index, cardindex)
 
 func generate_text(card):
 	image.play(card["name"])
@@ -24,7 +25,7 @@ func generate_text(card):
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:
-		emit_signal("selected", index)
+		emit_signal("selected", index, cardindex)
 
 func _on_Node_used(card, index2):
 	if index2 == index:
