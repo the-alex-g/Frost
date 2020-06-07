@@ -7,3 +7,15 @@ script = ExtResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 18.3722, 35.6637 )
+
+[node name="VSlider" type="VSlider" parent="."]
+margin_left = 103.761
+margin_top = 214.144
+margin_right = 119.761
+margin_bottom = 317.144
+min_value = -50.0
+max_value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="value_changed" from="VSlider" to="." method="_on_VSlider_value_changed"]

@@ -8,6 +8,7 @@ onready var image:AnimationPlayer = $AnimationPlayer
 var cardname:String = ""
 var damage:int = 0
 var health:int = 0
+var position_constant = 0
 var index:int = 0
 var cost:int = 0
 var type:String = ""
@@ -26,7 +27,11 @@ func _ready():
 		statstext.text += "|"
 	if health != 0:
 		statstext.text += str(health)
+	position_constant = position.y
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:
 		emit_signal("selected", index)
+
+func slide(value):
+	position.y = position_constant+value
