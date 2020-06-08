@@ -47,7 +47,7 @@ func selected(index, _card):
 func _on_Node_selected(index, card):
 	if selected_index != -1:
 		var deckindex:int = deck.find(card)
-		deck.remove(deckindex)
+		deck.remove(deck.find(card))
 		deck.append(available[selected_index])
 		emit_signal("used", available[selected_index], index)
 

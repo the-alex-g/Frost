@@ -5,7 +5,7 @@
 [ext_resource path="res://Art/Card.png" type="Texture" id=3]
 [ext_resource path="res://Battlefield/Cards/CardOnField.gd" type="Script" id=4]
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 102.7, 106.954 )
 
 [sub_resource type="Animation" id=2]
@@ -204,7 +204,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 13 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Frost Spirit" = SubResource( 2 )
@@ -219,3 +219,5 @@ shape = SubResource( 13 )
 anims/Wolf = SubResource( 11 )
 anims/Yeti = SubResource( 12 )
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

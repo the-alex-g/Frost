@@ -30,3 +30,13 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 func _on_Node_used(card, index2):
 	if index2 == index:
 		generate_text(card)
+		cardindex = card
+		index = index2
+
+func _on_Area2D_mouse_entered():
+	scale *= 1.2
+	z_index = 1
+
+func _on_Area2D_mouse_exited():
+	scale = Vector2.ONE
+	z_index = 0

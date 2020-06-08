@@ -36,3 +36,11 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 
 func slide(value):
 	position.y = position_constant+value
+
+func _on_Area2D_mouse_entered():
+	scale *= 1.2
+	z_index = 1
+
+func _on_Area2D_mouse_exited():
+	scale = Vector2.ONE
+	z_index = 0

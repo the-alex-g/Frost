@@ -39,3 +39,11 @@ func used(index2):
 	if index2 < index:
 		index -= 1
 		position.x -= 100
+
+func _on_Area2D_mouse_entered():
+	scale *= 1.2
+	z_index = 1
+
+func _on_Area2D_mouse_exited():
+	scale = Vector2.ONE
+	z_index = 0
