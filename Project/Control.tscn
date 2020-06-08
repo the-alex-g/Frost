@@ -10,11 +10,10 @@ script = ExtResource( 2 )
 [node name="Battlefield" parent="." instance=ExtResource( 1 )]
 
 [node name="CardEdit" parent="." instance=ExtResource( 3 )]
-[connection signal="edit" from="." to="CardEdit" method="_on_Main_edit"]
 [connection signal="edit" from="." to="Battlefield" method="_on_Main_edit"]
-[connection signal="fight" from="." to="CardEdit" method="_on_Main_fight"]
+[connection signal="edit" from="." to="CardEdit" method="_on_Main_edit"]
 [connection signal="fight" from="." to="Battlefield" method="_on_Main_fight"]
+[connection signal="fight" from="." to="CardEdit" method="_on_Main_fight"]
 [connection signal="new_deck" from="." to="Battlefield" method="_on_Main_new_deck"]
-[connection signal="dooble" from="Battlefield" to="." method="_on_Battlefield_dooble"]
 [connection signal="fight_over" from="Battlefield" to="." method="_on_Battlefield_fight_over"]
 [connection signal="deck_ready" from="CardEdit" to="." method="_on_CardEdit_deck_ready"]

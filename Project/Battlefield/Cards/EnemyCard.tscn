@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Resources/LargeFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Battlefield/Cards/EnemyCard.gd" type="Script" id=2]
@@ -63,7 +63,22 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=10]
+resource_name = "Kobold"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -77,7 +92,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -91,8 +106,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Pheonix"
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -106,8 +120,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Roc"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -128,7 +141,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 2
 hframes = 5
-frame = 3
+frame = 8
 
 [node name="Name" type="Label" parent="Sprite"]
 modulate = Color( 1, 0, 0, 1 )
@@ -183,7 +196,8 @@ __meta__ = {
 "anims/Fire Giant" = SubResource( 2 )
 "anims/Fire Spirit" = SubResource( 3 )
 "anims/Flame Spider" = SubResource( 4 )
-"anims/Magma Ooze" = SubResource( 5 )
-"anims/Obsidian Fly" = SubResource( 6 )
-anims/Pheonix = SubResource( 7 )
-anims/Roc = SubResource( 8 )
+anims/Kobold = SubResource( 10 )
+"anims/Magma Ooze" = SubResource( 11 )
+"anims/Obsidian Fly" = SubResource( 12 )
+anims/Pheonix = SubResource( 13 )
+anims/Roc = SubResource( 9 )

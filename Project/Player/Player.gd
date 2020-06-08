@@ -12,10 +12,20 @@ var handspace:Vector2 = Vector2(0,0)
 var cards_in_hand:Array = []
 var turn:int = 1
 var mana:int = 1
+var Ice_Beetle:Dictionary = {"name":"Ice Beetle", "type":"creature", "damage":1, "health":2, "cost":1}
+var Snow_Drake:Dictionary = {"name":"Snow Drake", "type":"creature", "damage":2, "health":2, "cost":2}
+var Yeti:Dictionary = {"name":"Yeti", "type":"creature", "damage":3, "health":3, "cost":2}
+var Ice_Spider:Dictionary = {"name":"Ice Spider", "type":"creature", "damage":2, "health":3, "cost":2}
+var Wolf:Dictionary = {"name":"Wolf", "type":"creature", "damage":1, "health":1, "cost":1}
+var Ice_Giant:Dictionary = {"name":"Ice Giant", "type":"creature", "damage":3, "health":3, "cost":3}
+var Ice_Wurm:Dictionary = {"name":"Ice Wurm", "type":"creature", "damage":4, "health":4, "cost":3}
+var Frost_Sword:Dictionary = {"name":"Frost Sword", "type":"enchantment", "damage":2, "cost":1, "health":0,}
+var Ice_Shield:Dictionary = {"name":"Ice Shield","type":"enchantment", "damage":0, "health":2, "cost":1}
+var Snow_Crab:Dictionary = {"name":"Snow Crab", "type":"creature", "damage":1, "health":3, "cost":2}
+var Frost_Spirit:Dictionary = {"name":"Frost Spirit", "type":"creature", "damage":1, "health":1, "cost":1}
 var deck:Array = [
-	{"name":"Frost Sword", "type":"enchantment", "damage":2, "cost":1, "health":0, "number":3}, {"name":"Frost Spirit", "type":"creature", "damage":1, "health":1, "cost":1, "number":3},
-	{"name":"Ice Shield","type":"enchantment", "damage":0, "health":2, "cost":1, "number":3}, {"name":"Snow Crab", "type":"creature", "damage":1, "health":3, "cost":2, "number":2},
-	{"name":"Snow Drake", "type":"creature", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Ice Giant", "type":"creature", "damage":3, "health":3, "cost":3, "number":1}
+	Frost_Sword, Frost_Sword, Frost_Sword, Ice_Shield, Ice_Shield, Ice_Shield, Frost_Spirit, Frost_Spirit,
+	Frost_Spirit, Snow_Crab, Snow_Crab, Snow_Drake, Snow_Drake, Ice_Giant
 ]
 signal selected(card, index)
 signal used(index)
@@ -44,11 +54,7 @@ func drawcards(number:int):
 			card.type = find("type")
 			card.index = cards_in_hand.size()
 			cards_in_hand.append(deck[type])
-			if find("number") == 1:
-				deck.erase(deck[type])
-				decksize -= 1
-			else:
-				deck[type]["number"] -= 1
+			deck.remove(type)
 			card.position = handspace
 			card.connect("selected", self, "selected")
 			var _error = connect("used", card, "used")
@@ -84,6 +90,7 @@ func _on_Main_damage_done_to_player(damage):
 	health -= damage
 
 func _on_Main_new_deck(newdeck):
+	deck.clear()
 	deck = newdeck
 
 func _on_Main_restart():

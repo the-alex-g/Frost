@@ -12,7 +12,8 @@ var position_constant = 0
 var index:int = 0
 var cost:int = 0
 var type:String = ""
-signal selected(index)
+var card
+signal selected(index, card)
 
 func _ready():
 	image.play(cardname)
@@ -31,7 +32,7 @@ func _ready():
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:
-		emit_signal("selected", index)
+		emit_signal("selected", index, card)
 
 func slide(value):
 	position.y = position_constant+value

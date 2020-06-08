@@ -1,15 +1,14 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Resources/Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Resources/LargeFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Art/Card.png" type="Texture" id=3]
 [ext_resource path="res://DeckEdit/Cardselect/DeckEdit.gd" type="Script" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 38.9199, 58.6678 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "Frost Spirit"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -24,7 +23,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "Frost Sword"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -39,7 +37,21 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "Ice Giant"
+resource_name = "Ice Beetle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -53,8 +65,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Ice Shield"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -68,10 +79,10 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 resource_name = "Ice Spider"
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 resource_name = "Ice Wurm"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -86,8 +97,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Snow Crab"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -101,8 +111,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "Snow Drake"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -116,11 +125,9 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "Wolf"
-
 [sub_resource type="Animation" id=11]
-resource_name = "Yeti"
+
+[sub_resource type="Animation" id=12]
 
 [node name="DeckEdit" type="Node2D"]
 script = ExtResource( 4 )
@@ -184,17 +191,18 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 "anims/Frost Spirit" = SubResource( 2 )
 "anims/Frost Sword" = SubResource( 3 )
-"anims/Ice Giant" = SubResource( 4 )
-"anims/Ice Shield" = SubResource( 5 )
-"anims/Ice Spider" = SubResource( 6 )
-"anims/Ice Wurm" = SubResource( 7 )
-"anims/Snow Crab" = SubResource( 8 )
-"anims/Snow Drake" = SubResource( 9 )
-anims/Wolf = SubResource( 10 )
-anims/Yeti = SubResource( 11 )
+"anims/Ice Beetle" = SubResource( 4 )
+"anims/Ice Giant" = SubResource( 5 )
+"anims/Ice Shield" = SubResource( 6 )
+"anims/Ice Spider" = SubResource( 7 )
+"anims/Ice Wurm" = SubResource( 8 )
+"anims/Snow Crab" = SubResource( 9 )
+"anims/Snow Drake" = SubResource( 10 )
+anims/Wolf = SubResource( 11 )
+anims/Yeti = SubResource( 12 )
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
