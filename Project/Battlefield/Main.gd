@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var field = $Battlefield
 var selected = {}
 var index:int = -1
 var phase:String = "Play"
@@ -8,6 +9,7 @@ signal damage_done_to_player(damage)
 signal damage_done_to_enemy(damage)
 signal used(index)
 signal attack
+signal dooble
 signal player_turn
 signal enemy_played(card)
 signal enemy_turn
@@ -64,16 +66,19 @@ func _on_Battlefield_not_used(card):
 		emit_signal("card_not_played", card)
 
 func _on_Main_new_deck(deck):
-	if phase == "Play":
-		emit_signal("new_deck", deck)
+	emit_signal("new_deck", deck)
 
 func _on_Main_fight():
 	phase = "Play"
 	emit_signal("restart")
+	position = Vector2(0,0)
+	field.position = Vector2(470,370)
 
 func _on_Main_edit():
 	phase = "Foo"
+	position = Vector2(2000,2000)
 
 func _on_Enemy_died():
 	if phase == "Play":
 		emit_signal("fight_over")
+		emit_signal("dooble")

@@ -207,6 +207,3 @@ func reset():
 	card1.reset()
 	card2.reset()
 	card3.reset()
-
-func _on_Main_fight_over():
-	position = Vector2(2000,2000)

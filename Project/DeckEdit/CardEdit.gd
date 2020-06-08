@@ -41,14 +41,12 @@ func generate_deck():
 
 func selected(index):
 	selected_index = index
-	print(str(index))
 
 func _on_Node_selected(index, card):
 	if selected_index != 0:
 		if deck[card]["number"] > 0:
 			deck[card]["number"] -= 1
 		deck[selected_index]["number"] += 1
-		print(str(deck))
 		emit_signal("used", available[selected_index], index)
 
 func _on_Button_pressed():
@@ -57,8 +55,6 @@ func _on_Button_pressed():
 			foo.append(item)
 	for item in foo:
 		deck.remove(deck.find(item))
-	print(str(deck))
-	print(str(foo))
 	emit_signal("deck_ready", deck)
 
 func _on_Main_edit():
@@ -72,6 +68,13 @@ func reset():
 	for item in foo:
 		deck.append(item)
 	foo.clear()
+	for _x in range(0,1):
+		var number:int = int(round(rand_range(0, notavailable.size()-1)))
+		var card = notavailable[number]
+		available.append(card)
+		var index:int = available.find(card)
+		available[index]["number"] -= 1
+		notavailable.remove(number)
 	generate_deck()
 	for item in available:
 		var Select = select.instance()
@@ -85,6 +88,6 @@ func reset():
 		var _error = connect("value_changed", Select, "slide")
 		Select.connect("selected", self, "selected")
 		add_child(Select)
-		slider.max_value += 25
-		slider.min_value -= 25
+		slider.max_value += 50
+		slider.min_value -= 50
 		spacemod += 100

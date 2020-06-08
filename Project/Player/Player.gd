@@ -95,4 +95,5 @@ func reset():
 	turn = 1
 	cards_in_hand.clear()
 	handspace = Vector2.ZERO
+	position = Vector2.ZERO
 	drawcards(3)

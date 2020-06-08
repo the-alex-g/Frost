@@ -10,3 +10,6 @@ func _on_CardEdit_deck_ready(deck):
 
 func _on_Battlefield_fight_over():
 	emit_signal("edit")
+
+func _on_Battlefield_dooble():
+	emit_signal("edit")
