@@ -41,7 +41,7 @@ func generate_deck():
 		get_node("Node/DeckEdit"+str(number)).index = number
 		number += 1
 
-func selected(index, card):
+func selected(index, _card):
 	selected_index = index
 
 func _on_Node_selected(index, card):
@@ -73,6 +73,7 @@ func reset():
 	for x in range(0,children):
 		var child = selectspace.get_child(x)
 		child.queue_free()
+	spacemod = 0
 	for item in available:
 		var Select = select.instance()
 		Select.damage = item["damage"]
@@ -85,7 +86,7 @@ func reset():
 		Select.position = Vector2(50,selectspace.position.y+spacemod)
 		var _error = connect("value_changed", Select, "slide")
 		Select.connect("selected", self, "selected")
-		add_child(Select)
+		selectspace.add_child(Select)
 		slider.max_value += 50
 		slider.min_value -= 50
 		spacemod += 125

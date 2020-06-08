@@ -10,7 +10,6 @@ var damage:int = 0
 var health:int = 0
 var type:String = ""
 var cost:int = 0
-signal selected
 
 func _ready():
 	$Sprite.hide()

@@ -59,7 +59,7 @@ func drawcards(number:int):
 			handspace.x += 100
 			hand.add_child(card)
 
-func _process(delta):
+func _process(_delta):
 	healthtext.text = str(health)
 	manatext.text = str(mana)
 
