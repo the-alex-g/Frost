@@ -11,15 +11,23 @@ var mana:int = 1
 var turns:int = 1
 var type
 var cards_in_hand:Array = []
+var Obsidian_Fly:Dictionary = {"name":"Obsidian Fly", "type":"creature", "damage":1, "cost":1, "health":1}
+var Fire_Spirit:Dictionary = {"name":"Fire Spirit", "type":"creature", "damage":1, "health":1, "cost":1}
+var Magma_Ooze:Dictionary = {"name":"Magma Ooze", "type":"creature", "damage":2, "health":1, "cost":1}
+var Flame_Spider:Dictionary = {"name":"Flame Spider", "type":"creature", "damage":3, "health":1, "cost":2}
+var Fire_Drake:Dictionary = {"name":"Fire Drake", "type":"creature", "damage":2, "health":2, "cost":2}
+var Fire_Giant:Dictionary = {"name":"Fire Giant", "type":"creature", "damage":3, "health":3, "cost":3}
+var Pheonix:Dictionary
+var Kobold:Dictionary
+var Fire_Beetle:Dictionary
+var Roc:Dictionary
 var savedeck:Array = [
-	{"name":"Obsidian Fly", "type":"creature", "damage":1, "cost":1, "health":1, "number":3}, {"name":"Fire Spirit", "type":"creature", "damage":1, "health":1, "cost":1, "number":3},
-	{"name":"Magma Ooze", "type":"creature", "damage":2, "health":1, "cost":1, "number":3}, {"name":"Flame Spider", "type":"creature", "damage":3, "health":1, "cost":2, "number":2},
-	{"name":"Fire Drake", "type":"creature", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Fire Giant", "type":"creature", "damage":3, "health":3, "cost":3, "number":1}
+	Obsidian_Fly, Obsidian_Fly, Obsidian_Fly, Fire_Spirit, Fire_Spirit, Fire_Spirit,Magma_Ooze, Magma_Ooze,
+	Magma_Ooze, Flame_Spider, Flame_Spider, Fire_Drake, Fire_Drake, Fire_Giant
 ]
 var deck:Array = [
-	{"name":"Obsidian Fly", "type":"creature", "damage":1, "cost":1, "health":1, "number":3}, {"name":"Fire Spirit", "type":"creature", "damage":1, "health":1, "cost":1, "number":3},
-	{"name":"Magma Ooze", "type":"creature", "damage":2, "health":1, "cost":1, "number":3}, {"name":"Flame Spider", "type":"creature", "damage":3, "health":1, "cost":2, "number":2},
-	{"name":"Fire Drake", "type":"creature", "damage":2, "health":2, "cost":2, "number":2}, {"name":"Fire Giant", "type":"creature", "damage":3, "health":3, "cost":3, "number":1}
+	Obsidian_Fly, Obsidian_Fly, Obsidian_Fly, Fire_Spirit, Fire_Spirit, Fire_Spirit,Magma_Ooze, Magma_Ooze,
+	Magma_Ooze, Flame_Spider, Flame_Spider, Fire_Drake, Fire_Drake, Fire_Giant
 ]
 signal played(card)
 signal turn_over
@@ -111,17 +119,12 @@ func play3():
 	total += 1
 
 func drawcards(number:int):
-	decksize = deck.size()-1
-	if decksize != -1:
+	if deck.size() > 0:
 		for _x in range(0,number):
 			randomize()
-			type = int(round(rand_range(0,decksize)))
+			type = int(round(rand_range(0,deck.size()-1)))
 			cards_in_hand.append(deck[type])
-			if deck[type]["number"] == 1:
-				deck.erase(deck[type])
-				decksize -= 1
-			else:
-				deck[type]["number"] -= 1
+			deck.remove(type)
 
 func _on_Main_damage_done_to_enemy(damage:int):
 	health -= damage

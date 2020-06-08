@@ -88,7 +88,6 @@ func _on_Main_damage_done_to_player(damage):
 	health -= damage
 
 func _on_Main_new_deck(newdeck):
-	deck.clear()
 	deck = newdeck
 
 func _on_Main_restart():
