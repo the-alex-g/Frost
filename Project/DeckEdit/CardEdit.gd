@@ -89,4 +89,4 @@ func reset():
 		add_child(Select)
 		slider.max_value += 50
 		slider.min_value -= 50
-		spacemod += 150
+		spacemod += 125
