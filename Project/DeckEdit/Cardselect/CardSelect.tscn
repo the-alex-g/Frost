@@ -138,6 +138,19 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=11]
+resource_name = "Snow Snail"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
 
 [sub_resource type="Animation" id=12]
 
@@ -148,6 +161,7 @@ script = ExtResource( 4 )
 texture = ExtResource( 3 )
 vframes = 2
 hframes = 6
+frame = 10
 
 [node name="Name" type="Label" parent="Sprite"]
 modulate = Color( 0, 0.0901961, 1, 1 )
@@ -216,7 +230,7 @@ shape = SubResource( 1 )
 "anims/Ice Wurm" = SubResource( 8 )
 "anims/Snow Crab" = SubResource( 9 )
 "anims/Snow Drake" = SubResource( 10 )
-anims/Wolf = SubResource( 11 )
+"anims/Snow Snail" = SubResource( 11 )
 anims/Yeti = SubResource( 12 )
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
