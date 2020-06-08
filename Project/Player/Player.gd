@@ -40,12 +40,10 @@ func find(variable:String):
 
 func drawcards(number:int):
 	decksize = deck.size()-1
-	#for item in deck:
-		#decksize += 1
 	for _x in range(0,number):
-		if decksize >= 0:
+		if deck.size() > 0:
 			randomize()
-			type = int(round(rand_range(0,decksize)))
+			type = int(round(rand_range(0,deck.size()-1)))
 			var card = cards.instance()
 			card.cardname = find("name")
 			card.damage = find("damage")

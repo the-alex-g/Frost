@@ -9,7 +9,7 @@ var cardname:String = ""
 var damage:int = 0
 var health:int = 0
 var index:int = 0
-var cardindex:int = 0
+var cardindex
 var cost:int = 0
 var type:String = ""
 signal selected(index, cardindex)

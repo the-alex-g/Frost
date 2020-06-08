@@ -3,7 +3,7 @@ extends Node2D
 onready var selectspace:Position2D = $Position2D
 onready var slider:VSlider = $VSlider
 var spacemod:int = 0
-var selected_index:int = 0
+var selected_index:int = -1
 var select:PackedScene = preload("res://DeckEdit/Cardselect/CardSelect.tscn")
 var Ice_Beetle:Dictionary = {"name":"Ice Beetle", "type":"creature", "damage":1, "health":2, "cost":1}
 var Snow_Drake:Dictionary = {"name":"Snow Drake", "type":"creature", "damage":2, "health":2, "cost":2}
@@ -23,7 +23,6 @@ var deck:Array = [
 	Frost_Sword, Frost_Sword, Frost_Sword, Ice_Shield, Ice_Shield, Ice_Shield, Frost_Spirit, Frost_Spirit,
 	Frost_Spirit, Snow_Crab, Snow_Crab, Snow_Drake, Snow_Drake, Ice_Giant
 ]
-var foo:Array = []
 signal value_changed(value)
 signal used(card, index2)
 signal deck_ready(deck)
@@ -38,7 +37,7 @@ func generate_deck():
 	var number:int = 1
 	for item in deck:
 		get_node("Node/DeckEdit"+str(number)).generate_text(item)
-		get_node("Node/DeckEdit"+str(number)).cardindex = deck.find(item)
+		get_node("Node/DeckEdit"+str(number)).cardindex = item
 		get_node("Node/DeckEdit"+str(number)).index = number
 		number += 1
 
@@ -46,8 +45,9 @@ func selected(index, card):
 	selected_index = index
 
 func _on_Node_selected(index, card):
-#	if selected_index != 0:
-		deck.remove(card)
+	if selected_index != -1:
+		var deckindex:int = deck.find(card)
+		deck.remove(deckindex)
 		deck.append(available[selected_index])
 		print(str(available[selected_index]))
 		emit_signal("used", available[selected_index], index)
@@ -63,9 +63,6 @@ func _on_Main_fight():
 	position = Vector2(2000,2000)
 
 func reset():
-	for item in foo:
-		deck.append(item)
-	foo.clear()
 	for _x in range(0,1):
 		randomize()
 		var number:int = int(round(rand_range(0, notavailable.size()-1)))
@@ -73,6 +70,10 @@ func reset():
 		available.append(card)
 		notavailable.remove(number)
 	generate_deck()
+	var children = selectspace.get_child_count()
+	for x in range(0,children):
+		var child = selectspace.get_child(x)
+		child.queue_free()
 	for item in available:
 		var Select = select.instance()
 		Select.damage = item["damage"]
