@@ -17,10 +17,12 @@ var Magma_Ooze:Dictionary = {"name":"Magma Ooze", "type":"creature", "damage":2,
 var Flame_Spider:Dictionary = {"name":"Flame Spider", "type":"creature", "damage":3, "health":1, "cost":2}
 var Fire_Drake:Dictionary = {"name":"Fire Drake", "type":"creature", "damage":2, "health":2, "cost":2}
 var Fire_Giant:Dictionary = {"name":"Fire Giant", "type":"creature", "damage":3, "health":3, "cost":3}
-var Pheonix:Dictionary
-var Kobold:Dictionary
-var Fire_Beetle:Dictionary
-var Roc:Dictionary
+var Pheonix:Dictionary = {"name":"Pheonix", "type":"creature", "damage":2, "health":2, "cost":1}
+var Kobold:Dictionary = {"name":"Kobold", "type":"creature", "damage":1, "health":1, "cost":1}
+var Fire_Beetle:Dictionary = {"name":"Fire Beetle", "type":"creature", "damage":1, "health":2, "cost":1}
+var Roc:Dictionary = {"name":"Roc", "type":"creature", "damage":3, "health":3, "cost":2}
+var Fire_Wurm:Dictionary = {"name":"Fire Wurm", "type":"creature", "damage":4, "health":4, "cost":3}
+var locked:Array = [Pheonix, Kobold, Fire_Beetle, Roc, Fire_Wurm]
 var savedeck:Array = [
 	Obsidian_Fly, Obsidian_Fly, Obsidian_Fly, Fire_Spirit, Fire_Spirit, Fire_Spirit,Magma_Ooze, Magma_Ooze,
 	Magma_Ooze, Flame_Spider, Flame_Spider, Fire_Drake, Fire_Drake, Fire_Giant
@@ -36,7 +38,7 @@ signal died
 func _ready():
 	drawcards(2)
 
-func _process(delta):
+func _process(_delta):
 	healthtext.text = str(health)
 
 func take_turn():
@@ -130,6 +132,12 @@ func _on_Main_damage_done_to_enemy(damage:int):
 	health -= damage
 	if health <= 0:
 		emit_signal("died")
+		randomize()
+		var choice:int = int(round(rand_range(0,locked.size()-1)))
+		var card = locked[choice]
+		savedeck.remove(int(round(rand_range(0,savedeck.size()-1))))
+		savedeck.append(card)
+		locked.remove(choice)
 
 func _on_Main_enemy_turn():
 	take_turn()

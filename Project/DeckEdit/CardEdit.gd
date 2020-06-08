@@ -49,7 +49,6 @@ func _on_Node_selected(index, card):
 		var deckindex:int = deck.find(card)
 		deck.remove(deckindex)
 		deck.append(available[selected_index])
-		print(str(available[selected_index]))
 		emit_signal("used", available[selected_index], index)
 
 func _on_Button_pressed():
