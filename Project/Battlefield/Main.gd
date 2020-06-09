@@ -9,11 +9,10 @@ signal damage_done_to_player(damage)
 signal damage_done_to_enemy(damage)
 signal used(index)
 signal attack
-signal dooble
 signal player_turn
 signal enemy_played(card)
 signal enemy_turn
-signal fight_over
+signal fight_over(won)
 signal card_not_played(card)
 signal cards_died(number)
 signal restart
@@ -74,11 +73,14 @@ func _on_Main_fight():
 	position = Vector2(0,0)
 	field.position = Vector2(470,370)
 
-func _on_Main_edit():
+func _on_Main_edit(_won):
 	phase = "Foo"
 	position = Vector2(2000,2000)
 
 func _on_Enemy_died():
 	if phase == "Play":
-		emit_signal("fight_over")
-		emit_signal("dooble")
+		emit_signal("fight_over", true)
+
+func _on_Player_fight_over():
+	if phase == "Play":
+		emit_signal("fight_over", false)

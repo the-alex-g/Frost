@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Battlefield/Battlefield.gd" type="Script" id=1]
 [ext_resource path="res://Battlefield/Cards/CardOnField.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/Background.png" type="Texture" id=3]
 [ext_resource path="res://Battlefield/Cards/EnemyCard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/Enemy_card.png" type="Texture" id=5]
 
 [node name="Battlefield" type="Node2D"]
 position = Vector2( 466.54, 366.234 )
@@ -30,6 +31,13 @@ position = Vector2( 20, -252.632 )
 
 [node name="EnemyCard3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 232.632, -252.632 )
+
+[node name="Enemy_card" type="Sprite" parent="."]
+position = Vector2( 467.278, -272.994 )
+texture = ExtResource( 5 )
+vframes = 2
+hframes = 6
+frame = 11
 [connection signal="selected" from="CardOnField" to="." method="_on_CardOnField_selected"]
 [connection signal="selected" from="CardOnField2" to="." method="_on_CardOnField2_selected"]
 [connection signal="selected" from="CardOnField3" to="." method="_on_CardOnField3_selected"]

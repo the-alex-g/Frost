@@ -30,6 +30,7 @@ var deck:Array = [
 	Frost_Spirit, Snow_Crab, Snow_Crab, Snow_Drake, Snow_Drake, Ice_Giant
 ]
 signal selected(card, index)
+signal fight_over
 signal used(index)
 signal next_pressed()
 
@@ -83,7 +84,8 @@ func new_turn():
 		mana = turn
 	else:
 		mana = 3
-	drawcards(1)
+	if cards_in_hand.size() < 7:
+		drawcards(1)
 
 func _on_Button_pressed():
 	pressed.play()
@@ -92,6 +94,8 @@ func _on_Button_pressed():
 
 func _on_Main_damage_done_to_player(damage):
 	health -= damage
+	if health <= 0:
+		emit_signal("fight_over")
 
 func _on_Main_new_deck(newdeck):
 	deck = newdeck

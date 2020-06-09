@@ -1,22 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/LargeFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Music/Button_Pressed.wav" type="AudioStream" id=3]
 [ext_resource path="res://Music/Draw_Card.wav" type="AudioStream" id=4]
+[ext_resource path="res://Art/Card.png" type="Texture" id=5]
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="Card" type="Sprite" parent="."]
+position = Vector2( 63.1196, 522.534 )
+texture = ExtResource( 5 )
+vframes = 2
+hframes = 6
+frame = 11
+
 [node name="HBoxContainer" type="Position2D" parent="."]
-position = Vector2( 407.775, 515.669 )
+position = Vector2( 164.775, 522.669 )
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 0, 0.0901961, 1, 1 )
-margin_left = 112.171
-margin_top = 501.045
-margin_right = 152.171
-margin_bottom = 527.045
+margin_left = 893.947
+margin_top = 511.334
+margin_right = 933.947
+margin_bottom = 537.334
 custom_fonts/font = ExtResource( 2 )
 text = "Mana"
 __meta__ = {
@@ -25,10 +33,10 @@ __meta__ = {
 
 [node name="Health" type="Label" parent="."]
 modulate = Color( 0, 0.0901961, 1, 1 )
-margin_left = 111.514
-margin_top = 472.639
-margin_right = 152.514
-margin_bottom = 498.639
+margin_left = 892.475
+margin_top = 483.743
+margin_right = 933.475
+margin_bottom = 509.743
 custom_fonts/font = ExtResource( 2 )
 text = "health"
 __meta__ = {
@@ -36,10 +44,10 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 92.9828
-margin_top = 530.683
-margin_right = 176.983
-margin_bottom = 562.683
+margin_left = 873.944
+margin_top = 541.787
+margin_right = 957.944
+margin_bottom = 573.787
 custom_fonts/font = ExtResource( 2 )
 text = "End Turn"
 __meta__ = {

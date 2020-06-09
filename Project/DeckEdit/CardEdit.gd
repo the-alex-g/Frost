@@ -3,7 +3,9 @@ extends Node2D
 onready var selectspace:Position2D = $Position2D
 onready var slider:VSlider = $VSlider
 onready var button_pressed:AudioStreamPlayer = $AudioStreamPlayer
+onready var show_unlocked:Sprite = $Unlocked
 var spacemod:int = 0
+var won:bool
 var selected_index = null
 var select:PackedScene = preload("res://DeckEdit/Cardselect/CardSelect.tscn")
 var Ice_Beetle:Dictionary = {"name":"Ice Beetle", "type":"creature", "damage":2, "health":1, "cost":1}
@@ -68,20 +70,27 @@ func _on_Button_pressed():
 	yield(get_tree().create_timer(0.5), "timeout")
 	emit_signal("deck_ready", deck)
 
-func _on_Main_edit():
+func _on_Main_edit(won2):
 	position = Vector2(0,0)
+	won = won2
 	reset()
 
 func _on_Main_fight():
 	position = Vector2(2000,2000)
 
 func reset():
-	for _x in range(0,1):
-		randomize()
-		var number:int = int(round(rand_range(0, notavailable.size()-1)))
-		var card = notavailable[number]
-		available.append(card)
-		notavailable.remove(number)
+	var card
+	if won:
+		for _x in range(0,1):
+			randomize()
+			var number:int = int(round(rand_range(0, notavailable.size()-1)))
+			card = notavailable[number]
+			available.append(card)
+			notavailable.remove(number)
+		show_unlocked.visible = true
+		show_unlocked.generate_text(card)
+		yield(get_tree().create_timer(1), "timeout")
+		show_unlocked.visible = false
 	var children = selectspace.get_child_count()
 	for x in range(0,children):
 		var child = selectspace.get_child(x)
