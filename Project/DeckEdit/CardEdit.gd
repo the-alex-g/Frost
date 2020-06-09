@@ -48,21 +48,17 @@ func selected(_index, card):
 	selected_index = card
 
 func _on_Node_selected(index, card):
-	if selected_index != null:
-		var dooble:String
-		var foo:String = str(selected_index["name"])
-		for character in foo:
-			if character == " ":
-				dooble += "_"
-			else:
-				dooble += character
+	if selected_index != null and deck2.count(selected_index) < 3:
+		var dooble:String = space_to_underscore(selected_index["name"])
 		var number = 0
 		for item in deck:
 			if item == card and number == index-1:
 				deck.erase(item)
+				deck2.erase(item)
 				break
 			number += 1
 		deck.insert(number,get(dooble))
+		deck2.insert(number, get(dooble))
 		generate_deck()
 		emit_signal("used", get(dooble), index)
 
@@ -104,5 +100,17 @@ func reset():
 		slider.max_value += 50
 		slider.min_value -= 50
 		spacemod += 125
-	deck = deck2
+	deck.clear()
+	for item in deck2:
+		var foo:String = space_to_underscore(item["name"])
+		deck.append(get(foo))
 	generate_deck()
+
+func space_to_underscore(string:String):
+	var freddie:String = ""
+	for character in string:
+		if character == " ":
+			freddie += "_"
+		else:
+			freddie += character
+	return freddie
