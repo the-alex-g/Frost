@@ -3,6 +3,7 @@ extends Node2D
 onready var selectspace:Position2D = $Position2D
 onready var slider:VSlider = $VSlider
 onready var button_pressed:AudioStreamPlayer = $AudioStreamPlayer
+onready var music:AudioStreamPlayer = $Music
 onready var show_unlocked:Sprite = $Unlocked
 var spacemod:int = 0
 var won:bool
@@ -68,6 +69,7 @@ func _on_Node_selected(index, card):
 func _on_Button_pressed():
 	button_pressed.play()
 	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	emit_signal("deck_ready", deck)
 
 func _on_Main_edit(won2):
@@ -76,6 +78,7 @@ func _on_Main_edit(won2):
 	reset()
 
 func _on_Main_fight():
+	music.stop()
 	position = Vector2(2000,2000)
 
 func reset():
@@ -116,6 +119,7 @@ func reset():
 	for item in deck2:
 		var foo:String = space_to_underscore(item["name"])
 		deck.append(get(foo))
+	music.play()
 	generate_deck()
 
 func space_to_underscore(string:String):

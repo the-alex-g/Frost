@@ -112,6 +112,7 @@ func reset():
 	mana = 1
 	turn = 1
 	cards_in_hand.clear()
+	end_turn.disabled = false
 	for x in range(0,hand.get_child_count()):
 		var child = hand.get_child(x)
 		child.queue_free()

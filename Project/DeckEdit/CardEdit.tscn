@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://DeckEdit/CardEdit.gd" type="Script" id=1]
 [ext_resource path="res://DeckEdit/Cardselect/DeckEdit.tscn" type="PackedScene" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://Resources/Font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Art/Card.png" type="Texture" id=8]
 [ext_resource path="res://DeckEdit/Unlocked.gd" type="Script" id=9]
+[ext_resource path="res://Music/DeckEdit.ogg" type="AudioStream" id=10]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -24,7 +25,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -38,7 +39,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Ice Beetle"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -53,7 +54,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -67,7 +68,7 @@ tracks/0/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -81,7 +82,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "Ice Spider"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -96,7 +97,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "Ice Wurm"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -111,7 +112,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -125,7 +126,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -139,7 +140,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 resource_name = "Snow Snail"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -154,7 +155,7 @@ tracks/0/keys = {
 "values": [ 10 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -316,34 +317,37 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Unlocked"]
-"anims/Frost Spirit" = SubResource( 2 )
-"anims/Frost Sword" = SubResource( 3 )
-"anims/Ice Beetle" = SubResource( 4 )
-"anims/Ice Giant" = SubResource( 5 )
-"anims/Ice Shield" = SubResource( 6 )
-"anims/Ice Spider" = SubResource( 7 )
-"anims/Ice Wurm" = SubResource( 8 )
-"anims/Snow Crab" = SubResource( 9 )
-"anims/Snow Drake" = SubResource( 10 )
-"anims/Snow Snail" = SubResource( 11 )
-anims/Yeti = SubResource( 12 )
+"anims/Frost Spirit" = SubResource( 1 )
+"anims/Frost Sword" = SubResource( 2 )
+"anims/Ice Beetle" = SubResource( 3 )
+"anims/Ice Giant" = SubResource( 4 )
+"anims/Ice Shield" = SubResource( 5 )
+"anims/Ice Spider" = SubResource( 6 )
+"anims/Ice Wurm" = SubResource( 7 )
+"anims/Snow Crab" = SubResource( 8 )
+"anims/Snow Drake" = SubResource( 9 )
+"anims/Snow Snail" = SubResource( 10 )
+anims/Yeti = SubResource( 11 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 [connection signal="used" from="." to="Node" method="_on_CardEdit_used"]
 [connection signal="value_changed" from="VSlider" to="." method="_on_VSlider_value_changed"]
 [connection signal="selected" from="Node" to="." method="_on_Node_selected"]
-[connection signal="used" from="Node" to="Node/DeckEdit11" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit2" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit3" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit12" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit9" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit8" method="_on_Node_used"]
 [connection signal="used" from="Node" to="Node/DeckEdit7" method="_on_Node_used"]
 [connection signal="used" from="Node" to="Node/DeckEdit6" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit13" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit14" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit5" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit1" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit8" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit4" method="_on_Node_used"]
 [connection signal="used" from="Node" to="Node/DeckEdit10" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit9" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit13" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit12" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit11" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit5" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit3" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit1" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit2" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit4" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit14" method="_on_Node_used"]
 [connection signal="selected" from="Node/DeckEdit1" to="Node" method="_on_DeckEdit1_selected"]
 [connection signal="selected" from="Node/DeckEdit2" to="Node" method="_on_DeckEdit2_selected"]
 [connection signal="selected" from="Node/DeckEdit3" to="Node" method="_on_DeckEdit3_selected"]

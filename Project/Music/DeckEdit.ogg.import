@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DeckEdit.ogg-8fc9ece9f6668f1c352b80209f15db96.oggstr"
+
+[deps]
+
+source_file="res://Music/DeckEdit.ogg"
+dest_files=[ "res://.import/DeckEdit.ogg-8fc9ece9f6668f1c352b80209f15db96.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

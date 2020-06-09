@@ -1,13 +1,9 @@
 extends Node2D
 
-onready var music:AudioStreamPlayer = $AudioStreamPlayer
 onready var main = $Battlefield
 signal new_deck(deck)
 signal edit
 signal fight
-
-func _ready():
-	music.play()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

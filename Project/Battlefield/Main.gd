@@ -3,6 +3,7 @@ extends Node2D
 onready var field = $Battlefield
 onready var player = $Player
 onready var enemy = $Enemy
+onready var music:AudioStreamPlayer = $Music
 var selected = {}
 var index:int = -1
 var phase:String = "Play"
@@ -19,6 +20,9 @@ signal card_not_played(card)
 signal cards_died(number)
 signal restart
 signal new_deck(deck)
+
+func _ready():
+	music.play()
 
 func _on_Player_selected(card, index2):
 	if phase == "Play":
@@ -72,6 +76,7 @@ func _on_Main_new_deck(deck):
 func _on_Main_fight():
 	phase = "Play"
 	emit_signal("restart")
+	music.play()
 	position = Vector2(0,0)
 	field.position = Vector2(470,370)
 
@@ -81,8 +86,10 @@ func _on_Main_edit(_won):
 
 func _on_Enemy_died():
 	if phase == "Play":
+		music.stop()
 		emit_signal("fight_over", true)
 
 func _on_Player_fight_over():
 	if phase == "Play":
+		music.stop()
 		emit_signal("fight_over", false)
