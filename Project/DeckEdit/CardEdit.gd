@@ -83,7 +83,8 @@ func _on_Main_fight():
 
 func reset():
 	var card
-	if won:
+	slider.value = 0
+	if won and notavailable.size() > 0:
 		for _x in range(0,1):
 			randomize()
 			var number:int = int(round(rand_range(0, notavailable.size()-1)))
@@ -112,8 +113,9 @@ func reset():
 		var _error = connect("value_changed", Select, "slide")
 		Select.connect("selected", self, "selected")
 		selectspace.add_child(Select)
-		slider.max_value += 50
-		slider.min_value -= 50
+		if slider.max_value <= 500:
+			slider.max_value += 50
+			slider.min_value -= 50
 		spacemod += 125
 	deck.clear()
 	for item in deck2:

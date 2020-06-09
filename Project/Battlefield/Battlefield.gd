@@ -36,11 +36,12 @@ func _on_Main_selected_card(card):
 			card1.cost = card["cost"]
 			card1.type = card["type"]
 			emit_signal("used")
+			card1.generate_text(true)
 		elif card["type"] == "enchantment" and card1.cardname != "":
 			card1.health += card["health"]
 			card1.damage += card["damage"]
 			emit_signal("used")
-		card1.generate_text(true)
+			card1.generate_text(true)
 	elif lastpressed == 2:
 		if card["type"] != "enchantment":
 			card2.damage = card["damage"]
@@ -49,11 +50,12 @@ func _on_Main_selected_card(card):
 			card2.cost = card["cost"]
 			card2.type = card["type"]
 			emit_signal("used")
+			card2.generate_text(true)
 		elif card["type"] == "enchantment" and card2.cardname != "":
 			card2.health += card["health"]
 			card2.damage += card["damage"]
 			emit_signal("used")
-		card2.generate_text(true)
+			card2.generate_text(true)
 	elif lastpressed == 3:
 		if card["type"] != "enchantment":
 			card3.damage = card["damage"]
@@ -62,11 +64,12 @@ func _on_Main_selected_card(card):
 			card3.cost = card["cost"]
 			card3.type = card["type"]
 			emit_signal("used")
+			card3.generate_text(true)
 		elif card["type"] == "enchantment" and card3.cardname != "":
 			card3.health += card["health"]
 			card3.damage += card["damage"]
 			emit_signal("used")
-		card3.generate_text(true)
+			card3.generate_text(true)
 
 func _on_Main_attack():
 	var enemy_died:int = 0
