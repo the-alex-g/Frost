@@ -210,11 +210,10 @@ __meta__ = {
 }
 
 [node name="Instrux" type="Node2D" parent="."]
-visible = false
 
 [node name="Sprite" type="Sprite" parent="Instrux"]
-position = Vector2( 511.87, 249.028 )
-scale = Vector2( 1.01925, 1 )
+position = Vector2( 512.978, 249.028 )
+scale = Vector2( 1.0259, 1 )
 texture = ExtResource( 9 )
 
 [node name="DeckEdit" type="Node2D" parent="Instrux/Sprite"]
