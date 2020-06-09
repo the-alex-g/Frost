@@ -108,6 +108,9 @@ func reset():
 	mana = 1
 	turn = 1
 	cards_in_hand.clear()
+	for x in range(0,hand.get_child_count()):
+		var child = hand.get_child(x)
+		child.queue_free()
 	handspace = Vector2.ZERO
 	position = Vector2.ZERO
 	drawcards(3)

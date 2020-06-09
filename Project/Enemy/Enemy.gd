@@ -159,7 +159,9 @@ func _on_Main_restart():
 
 func restart():
 	health = 12
-	deck = savedeck
+	deck.clear()
+	for item in savedeck:
+		deck.append(item)
 	mana = 1
 	turns = 1
 	cards_in_hand.clear()
