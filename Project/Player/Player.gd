@@ -3,6 +3,7 @@ extends Node2D
 onready var hand = $HBoxContainer
 onready var manatext:Label = $Label
 onready var healthtext:Label = $Health
+onready var pressed:AudioStreamPlayer = $AudioStreamPlayer
 var cards:PackedScene = preload("res://Player/Cards/Card.tscn")
 var decksize:int = -1
 var type:int
@@ -82,6 +83,8 @@ func new_turn():
 	drawcards(1)
 
 func _on_Button_pressed():
+	pressed.play()
+	yield(get_tree().create_timer(0.5), "timeout")
 	emit_signal("next_pressed")
 
 func _on_Main_damage_done_to_player(damage):

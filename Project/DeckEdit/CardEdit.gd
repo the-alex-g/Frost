@@ -2,6 +2,7 @@ extends Node2D
 
 onready var selectspace:Position2D = $Position2D
 onready var slider:VSlider = $VSlider
+onready var button_pressed:AudioStreamPlayer = $AudioStreamPlayer
 var spacemod:int = 0
 var selected_index = null
 var select:PackedScene = preload("res://DeckEdit/Cardselect/CardSelect.tscn")
@@ -63,6 +64,8 @@ func _on_Node_selected(index, card):
 		emit_signal("used", get(dooble), index)
 
 func _on_Button_pressed():
+	button_pressed.play()
+	yield(get_tree().create_timer(0.5), "timeout")
 	emit_signal("deck_ready", deck)
 
 func _on_Main_edit():

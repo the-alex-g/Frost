@@ -5,6 +5,7 @@ onready var costtext:Label = $Sprite/Cost
 onready var statstext:Label = $Sprite/Stats
 onready var typetext:Label = $Sprite/Type
 onready var image:AnimationPlayer = $AnimationPlayer
+onready var pressedsound:AudioStreamPlayer = $AudioStreamPlayer
 var cardname:String = ""
 var damage:int = 0
 var health:int = 0
@@ -30,6 +31,7 @@ func _ready():
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event.is_pressed() and event.button_index == BUTTON_LEFT:
+		pressedsound.play()
 		emit_signal("selected", index)
 		last_selected = true
 
