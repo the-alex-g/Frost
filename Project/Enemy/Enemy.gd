@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var healthtext:Label = $Health
-var health:int = 0
+var health:int = 12
 var decksize:int = -1
 var total = 0
 var onecost:Array = []
@@ -134,9 +134,15 @@ func _on_Main_damage_done_to_enemy(damage:int):
 		emit_signal("died")
 		randomize()
 		var choice:int = int(round(rand_range(0,locked.size()-1)))
-		var card = locked[choice]
+		var card = locked[choice]["name"]
+		var dooble:String = ""
+		for character in card:
+			if character == " ":
+				dooble += "_"
+			else:
+				dooble+=character
 		savedeck.remove(int(round(rand_range(0,savedeck.size()-1))))
-		savedeck.append(card)
+		savedeck.append(get(dooble))
 		locked.remove(choice)
 
 func _on_Main_enemy_turn():
@@ -152,7 +158,7 @@ func _on_Main_restart():
 	restart()
 
 func restart():
-	health = 0
+	health = 1
 	deck = savedeck
 	mana = 1
 	turns = 1
