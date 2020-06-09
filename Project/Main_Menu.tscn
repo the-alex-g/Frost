@@ -9,7 +9,7 @@
 [ext_resource path="res://Art/Card.png" type="Texture" id=8]
 [ext_resource path="res://Art/Background.png" type="Texture" id=9]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -37,7 +37,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Ice Beetle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -52,7 +52,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -66,7 +66,7 @@ tracks/0/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -80,7 +80,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "Ice Spider"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -95,7 +95,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "Ice Wurm"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -110,7 +110,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -124,7 +124,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -138,7 +138,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 resource_name = "Snow Snail"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -153,7 +153,7 @@ tracks/0/keys = {
 "values": [ 10 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -274,17 +274,17 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Instrux/Sprite/DeckEdit"]
-"anims/Frost Spirit" = SubResource( 2 )
-"anims/Frost Sword" = SubResource( 3 )
-"anims/Ice Beetle" = SubResource( 4 )
-"anims/Ice Giant" = SubResource( 5 )
-"anims/Ice Shield" = SubResource( 6 )
-"anims/Ice Spider" = SubResource( 7 )
-"anims/Ice Wurm" = SubResource( 8 )
-"anims/Snow Crab" = SubResource( 9 )
-"anims/Snow Drake" = SubResource( 10 )
-"anims/Snow Snail" = SubResource( 11 )
-anims/Yeti = SubResource( 12 )
+"anims/Frost Spirit" = SubResource( 1 )
+"anims/Frost Sword" = SubResource( 2 )
+"anims/Ice Beetle" = SubResource( 3 )
+"anims/Ice Giant" = SubResource( 4 )
+"anims/Ice Shield" = SubResource( 5 )
+"anims/Ice Spider" = SubResource( 6 )
+"anims/Ice Wurm" = SubResource( 7 )
+"anims/Snow Crab" = SubResource( 8 )
+"anims/Snow Drake" = SubResource( 9 )
+"anims/Snow Snail" = SubResource( 10 )
+anims/Yeti = SubResource( 11 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Instrux/Sprite/DeckEdit"]
 stream = ExtResource( 3 )

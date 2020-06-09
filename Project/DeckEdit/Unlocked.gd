@@ -12,7 +12,6 @@ var index:int = 0
 var cardindex
 var cost:int = 0
 var type:String = ""
-signal selected(index, cardindex)
 
 func generate_text(card):
 	image.play(card["name"])

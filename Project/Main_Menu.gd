@@ -17,12 +17,16 @@ func _on_Play_pressed():
 	var _error = get_tree().change_scene_to(scene)
 
 func _on_Instructions_pressed():
+	pressed.play()
+	yield(get_tree().create_timer(0.5), "timeout")
 	instrux.visible = true
 	Instrux.disabled = true
 	play.disabled = true
 	back.disabled = false
 
 func _on_Back_pressed():
+	pressed.play()
+	yield(get_tree().create_timer(0.5), "timeout")
 	instrux.visible = false
 	Instrux.disabled = false
 	play.disabled = false
