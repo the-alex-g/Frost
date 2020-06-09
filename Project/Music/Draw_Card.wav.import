@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Draw_Card.wav-d583670ff0fe55ef68dff20fd82768fc.sample"
+
+[deps]
+
+source_file="res://Music/Draw_Card.wav"
+dest_files=[ "res://.import/Draw_Card.wav-d583670ff0fe55ef68dff20fd82768fc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

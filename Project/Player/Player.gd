@@ -4,6 +4,7 @@ onready var hand = $HBoxContainer
 onready var manatext:Label = $Label
 onready var healthtext:Label = $Health
 onready var pressed:AudioStreamPlayer = $AudioStreamPlayer
+onready var draw_card:AudioStreamPlayer = $AudioStreamPlayer2
 var cards:PackedScene = preload("res://Player/Cards/Card.tscn")
 var decksize:int = -1
 var type:int
@@ -59,6 +60,8 @@ func drawcards(number:int):
 			var _error = connect("used", card, "used")
 			handspace.x += 100
 			hand.add_child(card)
+			draw_card.play()
+			yield(get_tree().create_timer(0.5), "timeout")
 
 func _process(_delta):
 	healthtext.text = str(health)

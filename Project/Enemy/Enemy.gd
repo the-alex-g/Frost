@@ -42,7 +42,7 @@ func _process(_delta):
 	healthtext.text = str(health)
 
 func take_turn():
-	yield(get_tree().create_timer(0.5), "timeout")
+	#yield(get_tree().create_timer(0.5), "timeout")
 	drawcards(1)
 	if turns <= 3:
 		mana = turns
@@ -90,7 +90,7 @@ func take_turn():
 				play1()
 				play1()
 				play1()
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
 	emit_signal("turn_over")
 
 func play1():
