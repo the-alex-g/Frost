@@ -3,7 +3,7 @@ extends Node2D
 onready var selectspace:Position2D = $Position2D
 onready var slider:VSlider = $VSlider
 var spacemod:int = 0
-var selected_index:int = -1
+var selected_index = null
 var select:PackedScene = preload("res://DeckEdit/Cardselect/CardSelect.tscn")
 var Ice_Beetle:Dictionary = {"name":"Ice Beetle", "type":"creature", "damage":2, "health":1, "cost":1}
 var Snow_Drake:Dictionary = {"name":"Snow Drake", "type":"creature", "damage":2, "health":2, "cost":2}
@@ -44,20 +44,27 @@ func generate_deck():
 		get_node("Node/DeckEdit"+str(number)).index = number
 		number += 1
 
-func selected(index, _card):
-	selected_index = index
+func selected(_index, card):
+	selected_index = card
 
 func _on_Node_selected(index, card):
-	if selected_index != -1:
-		print(str(card))
+	if selected_index != null:
+		var dooble:String
+		var foo:String = str(selected_index["name"])
+		for character in foo:
+			if character == " ":
+				dooble += "_"
+			else:
+				dooble += character
+		var number = 0
 		for item in deck:
-			if item == card:
+			if item == card and number == index-1:
 				deck.erase(item)
-				deck2.erase(item)
 				break
-		deck.append(available[selected_index])
-		deck2.append(available[selected_index])
-		emit_signal("used", available[selected_index], index)
+			number += 1
+		deck.insert(number,get(dooble))
+		generate_deck()
+		emit_signal("used", get(dooble), index)
 
 func _on_Button_pressed():
 	emit_signal("deck_ready", deck)

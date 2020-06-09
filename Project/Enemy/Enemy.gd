@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var healthtext:Label = $Health
-var health:int = 1
+var health:int = 0
 var decksize:int = -1
 var total = 0
 var onecost:Array = []
@@ -152,7 +152,7 @@ func _on_Main_restart():
 	restart()
 
 func restart():
-	health = 12
+	health = 0
 	deck = savedeck
 	mana = 1
 	turns = 1
