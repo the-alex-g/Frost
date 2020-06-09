@@ -1,10 +1,171 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Music/FrostBG.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Resources/LargeFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Music/Button_Pressed.wav" type="AudioStream" id=3]
 [ext_resource path="res://Main_Menu.gd" type="Script" id=4]
 [ext_resource path="res://Art/Main_Menu.png" type="Texture" id=5]
+[ext_resource path="res://Resources/Font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Art/Card.png" type="Texture" id=8]
+[ext_resource path="res://Art/Background.png" type="Texture" id=9]
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Ice Beetle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=6]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Ice Spider"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Ice Wurm"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=9]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=10]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Snow Snail"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+
+[sub_resource type="Animation" id=12]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 4 )
@@ -47,4 +208,299 @@ text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Instrux" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="Instrux"]
+position = Vector2( 511.87, 249.028 )
+scale = Vector2( 1.01925, 1 )
+texture = ExtResource( 9 )
+
+[node name="DeckEdit" type="Node2D" parent="Instrux/Sprite"]
+position = Vector2( -183.412, 230.547 )
+
+[node name="Sprite" type="Sprite" parent="Instrux/Sprite/DeckEdit"]
+texture = ExtResource( 8 )
+vframes = 2
+hframes = 6
+
+[node name="Name" type="Label" parent="Instrux/Sprite/DeckEdit/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -38.3773
+margin_top = -57.8868
+margin_right = -10.3773
+margin_bottom = -40.8868
+custom_fonts/font = ExtResource( 7 )
+text = "Frost Spirit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" type="Label" parent="Instrux/Sprite/DeckEdit/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -34.0544
+margin_top = 27.4901
+margin_right = -6.05442
+margin_bottom = 44.4901
+custom_fonts/font = ExtResource( 7 )
+text = "creature"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="Instrux/Sprite/DeckEdit/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = 25.5943
+margin_top = -60.5459
+margin_right = 34.5943
+margin_bottom = -34.5459
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Label" parent="Instrux/Sprite/DeckEdit/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -7.15247
+margin_top = 36.7272
+margin_right = 19.8475
+margin_bottom = 62.7272
+custom_fonts/font = ExtResource( 2 )
+text = "1|1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Instrux/Sprite/DeckEdit"]
+"anims/Frost Spirit" = SubResource( 2 )
+"anims/Frost Sword" = SubResource( 3 )
+"anims/Ice Beetle" = SubResource( 4 )
+"anims/Ice Giant" = SubResource( 5 )
+"anims/Ice Shield" = SubResource( 6 )
+"anims/Ice Spider" = SubResource( 7 )
+"anims/Ice Wurm" = SubResource( 8 )
+"anims/Snow Crab" = SubResource( 9 )
+"anims/Snow Drake" = SubResource( 10 )
+"anims/Snow Snail" = SubResource( 11 )
+anims/Yeti = SubResource( 12 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Instrux/Sprite/DeckEdit"]
+stream = ExtResource( 3 )
+volume_db = 10.0
+
+[node name="Label" type="Label" parent="Instrux/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -113.097
+margin_top = 236.631
+margin_right = 41.9031
+margin_bottom = 262.631
+custom_fonts/font = ExtResource( 2 )
+text = "---Your hand is here---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Instrux/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -299.708
+margin_top = 133.382
+margin_right = -25.7077
+margin_bottom = 159.382
+custom_fonts/font = ExtResource( 2 )
+text = "To play a card, click the card you want..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Instrux/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -150.323
+margin_top = -22.7502
+margin_right = 123.677
+margin_bottom = 3.2498
+custom_fonts/font = ExtResource( 2 )
+text = "And click in one of these three zones."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Instrux/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = 355.668
+margin_top = 209.895
+margin_right = 426.668
+margin_bottom = 264.895
+custom_fonts/font = ExtResource( 2 )
+text = "Health: 12
+Mana: 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Instrux/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = 148.246
+margin_top = 20.4215
+margin_right = 440.246
+margin_bottom = 75.4215
+custom_fonts/font = ExtResource( 2 )
+text = "Creatures go in any of the three slots,
+and enchantments give creatures bonuses.
+Play enchantments on creatures on the battlefield
+to make them stronger!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Instrux/Sprite"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = 125.817
+margin_top = 293.784
+margin_right = 337.817
+margin_bottom = 319.784
+custom_fonts/font = ExtResource( 2 )
+text = "To end your turn, click here. ->"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Instrux/Sprite"]
+margin_left = 348.18
+margin_top = 290.645
+margin_right = 423.18
+margin_bottom = 322.645
+custom_fonts/font = ExtResource( 2 )
+text = "End Turn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="Instrux/Sprite"]
+margin_left = -57.3302
+margin_top = -127.249
+margin_right = 17.6698
+margin_bottom = -95.2493
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Card" type="Sprite" parent="Instrux"]
+position = Vector2( 111.33, 476.425 )
+texture = ExtResource( 8 )
+vframes = 2
+hframes = 6
+
+[node name="Label" type="Label" parent="Instrux/Card"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -49.6706
+margin_top = -117.832
+margin_right = 33.3294
+margin_bottom = -91.8317
+custom_fonts/font = ExtResource( 2 )
+text = "---A Card---"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Label" parent="Instrux/Card"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -7.15247
+margin_top = 35.1051
+margin_right = 19.8475
+margin_bottom = 61.1051
+custom_fonts/font = ExtResource( 2 )
+text = "1|1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats2" type="Label" parent="Instrux/Card"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -53.3657
+margin_top = 62.833
+margin_right = 50.6343
+margin_bottom = 88.833
+custom_fonts/font = ExtResource( 2 )
+text = "Damage|Health"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Instrux/Card"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -38.3773
+margin_top = -57.8868
+margin_right = -10.3773
+margin_bottom = -40.8868
+custom_fonts/font = ExtResource( 7 )
+text = "Frost Spirit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name2" type="Label" parent="Instrux/Card"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -37.9372
+margin_top = -86.9351
+margin_right = 7.06281
+margin_bottom = -60.9351
+custom_fonts/font = ExtResource( 2 )
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" type="Label" parent="Instrux/Card"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -35.2261
+margin_top = 27.197
+margin_right = -7.22606
+margin_bottom = 44.197
+custom_fonts/font = ExtResource( 7 )
+text = "creature"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type2" type="Label" parent="Instrux/Card"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = -78.1252
+margin_top = 22.0332
+margin_right = -20.1252
+margin_bottom = 48.0332
+custom_fonts/font = ExtResource( 2 )
+text = "Type"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="Instrux/Card"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = 25.5943
+margin_top = -60.5459
+margin_right = 34.5943
+margin_bottom = -34.5459
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost2" type="Label" parent="Instrux/Card"]
+modulate = Color( 0, 0.0901961, 1, 1 )
+margin_left = 44.2634
+margin_top = -62.532
+margin_right = 75.2634
+margin_bottom = -36.532
+custom_fonts/font = ExtResource( 2 )
+text = "Cost"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VBoxContainer/Instructions" to="." method="_on_Instructions_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Instrux/Sprite/Back" to="." method="_on_Back_pressed"]

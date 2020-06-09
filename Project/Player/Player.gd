@@ -5,6 +5,7 @@ onready var manatext:Label = $Label
 onready var healthtext:Label = $Health
 onready var pressed:AudioStreamPlayer = $AudioStreamPlayer
 onready var draw_card:AudioStreamPlayer = $AudioStreamPlayer2
+onready var end_turn:Button = $Button
 var cards:PackedScene = preload("res://Player/Cards/Card.tscn")
 var decksize:int = -1
 var type:int
@@ -86,15 +87,18 @@ func new_turn():
 		mana = 3
 	if cards_in_hand.size() < 7:
 		drawcards(1)
+	end_turn.disabled = false
 
 func _on_Button_pressed():
 	pressed.play()
+	end_turn.disabled = true
 	yield(get_tree().create_timer(0.5), "timeout")
 	emit_signal("next_pressed")
 
 func _on_Main_damage_done_to_player(damage):
 	health -= damage
 	if health <= 0:
+		end_turn.disabled = false
 		emit_signal("fight_over")
 
 func _on_Main_new_deck(newdeck):

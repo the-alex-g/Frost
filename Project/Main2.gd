@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var music:AudioStreamPlayer = $AudioStreamPlayer
+onready var main = $Battlefield
 signal new_deck(deck)
 signal edit
 signal fight
@@ -10,6 +11,8 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
+		main.player.reset()
+		main.enemy.restart()
 		var _error = get_tree().change_scene("res://Main_Menu.tscn")
 
 func _on_CardEdit_deck_ready(deck):

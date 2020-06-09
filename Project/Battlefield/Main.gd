@@ -1,6 +1,8 @@
 extends Node2D
 
 onready var field = $Battlefield
+onready var player = $Player
+onready var enemy = $Enemy
 var selected = {}
 var index:int = -1
 var phase:String = "Play"
