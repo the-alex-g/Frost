@@ -1,8 +1,13 @@
 extends Node2D
 
+
+onready var music:AudioStreamPlayer = $AudioStreamPlayer
 signal new_deck(deck)
 signal edit
 signal fight
+
+func _ready():
+	music.play()
 
 func _on_CardEdit_deck_ready(deck):
 	emit_signal("new_deck", deck)

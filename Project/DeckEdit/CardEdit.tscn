@@ -1,15 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://DeckEdit/CardEdit.gd" type="Script" id=1]
 [ext_resource path="res://DeckEdit/Cardselect/DeckEdit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://DeckEdit/Regulator.gd" type="Script" id=3]
 [ext_resource path="res://Resources/LargeFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Art/dood.png" type="Texture" id=5]
 
 [node name="CardEdit" type="Node2D"]
+position = Vector2( -6.02939, -1.50732 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -12.5971, 0 )
+scale = Vector2( 1.01768, 1 )
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( 20, -200 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 18.3722, 35.6637 )
@@ -84,20 +93,20 @@ __meta__ = {
 [connection signal="used" from="." to="Node" method="_on_CardEdit_used"]
 [connection signal="value_changed" from="VSlider" to="." method="_on_VSlider_value_changed"]
 [connection signal="selected" from="Node" to="." method="_on_Node_selected"]
+[connection signal="used" from="Node" to="Node/DeckEdit10" method="_on_Node_used"]
 [connection signal="used" from="Node" to="Node/DeckEdit5" method="_on_Node_used"]
 [connection signal="used" from="Node" to="Node/DeckEdit6" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit11" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit13" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit14" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit12" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit1" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit2" method="_on_Node_used"]
 [connection signal="used" from="Node" to="Node/DeckEdit3" method="_on_Node_used"]
 [connection signal="used" from="Node" to="Node/DeckEdit4" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit1" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit14" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit2" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit9" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit10" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit13" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit11" method="_on_Node_used"]
-[connection signal="used" from="Node" to="Node/DeckEdit12" method="_on_Node_used"]
 [connection signal="used" from="Node" to="Node/DeckEdit8" method="_on_Node_used"]
 [connection signal="used" from="Node" to="Node/DeckEdit7" method="_on_Node_used"]
+[connection signal="used" from="Node" to="Node/DeckEdit9" method="_on_Node_used"]
 [connection signal="selected" from="Node/DeckEdit1" to="Node" method="_on_DeckEdit1_selected"]
 [connection signal="selected" from="Node/DeckEdit2" to="Node" method="_on_DeckEdit2_selected"]
 [connection signal="selected" from="Node/DeckEdit3" to="Node" method="_on_DeckEdit3_selected"]
