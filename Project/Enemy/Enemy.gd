@@ -158,7 +158,7 @@ func _on_Main_restart():
 	restart()
 
 func restart():
-	health = 1
+	health = 12
 	deck = savedeck
 	mana = 1
 	turns = 1
