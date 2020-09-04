@@ -19,6 +19,11 @@ config/name="Project"
 run/main_scene="res://Main_Menu.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

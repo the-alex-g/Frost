@@ -210,6 +210,7 @@ __meta__ = {
 }
 
 [node name="Instrux" type="Node2D" parent="."]
+visible = false
 
 [node name="Sprite" type="Sprite" parent="Instrux"]
 position = Vector2( 512.978, 249.028 )
@@ -371,6 +372,7 @@ margin_top = 290.645
 margin_right = 423.18
 margin_bottom = 322.645
 custom_fonts/font = ExtResource( 2 )
+disabled = true
 text = "End Turn"
 __meta__ = {
 "_edit_use_anchors_": false
